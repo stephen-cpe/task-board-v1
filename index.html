@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Public capstone task board for Study-and-Learn by Azthreus Systems." />
+<title>Study-and-Learn // Capstone Task Board</title>
+<link rel="icon" type="image/png" href="assets/images/logo-v2.png" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+<div class="scanlines" aria-hidden="true"></div>
+<nav class="navbar navbar-expand-lg az-navbar sticky-top">
+  <div class="container-fluid px-3 px-lg-4">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="#top" aria-label="Project home">
+      <img src="assets/images/logo-v2.png" alt="Project logo" class="brand-logo" />
+      <span class="brand-title">Study-and-Learn</span>
+    </a>
+    <button class="navbar-toggler az-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#objective">Objective</a></li>
+        <li class="nav-item"><a class="nav-link" href="#workflow">Workflow</a></li>
+        <li class="nav-item"><a class="nav-link" href="#sprints">Sprints</a></li>
+        <li class="nav-item"><a class="nav-link" href="#board">Board</a></li>
+        <li class="nav-item"><a class="nav-link" href="#priorities">Backlog</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header id="top" class="hero-shell py-5">
+  <div class="container py-lg-4">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-8">
+        <p class="eyebrow mb-2"><span class="hex-accent"></span> CAPSTONE PROJECT BOARD <span class="hex-accent"></span></p>
+        <h1 class="display-4 hero-title mb-3">Study-and-Learn</h1>
+        <p class="lead hero-copy mb-4">A guided, form-driven AI web application that converts uploaded study materials into structured summaries, relevance assessments, and bite-sized learning paths.</p>
+        <div class="d-flex flex-wrap gap-2">
+          <span class="az-chip">Spec-Driven Development</span>
+          <span class="az-chip">Flask + Bootstrap</span>
+          <span class="az-chip">Ollama AI Integration</span>
+          <span class="az-chip">Form-Driven UI</span>
+        </div>
+      </div>
+      <div class="col-lg-4 text-center">
+        <div class="mascot-card mx-auto">
+          <img src="assets/images/logo-v2.png" alt="System Architecture" class="mascot-img" />
+          <div class="mascot-status mt-3">SYSTEM ARCHITECTURE</div>
+          <div class="small text-secondary-emphasis">Python Backend • Document Ingestion • Structured Prompting • Local AI Serving</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="objective" class="section-pad">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="az-panel h-100">
+            <h2 class="section-title">Project Objective</h2>
+            <p>Develop an MVP capstone system that reduces study planning friction by automating document analysis and curriculum generation.</p>
+            <p class="mb-0">Scope is strictly controlled to ensure end-to-end functionality, testing, and deployment within the capstone timeline.</p>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="az-panel h-100">
+            <h2 class="section-title">Workflow Pipeline</h2>
+            <div class="pipeline-grid" aria-label="MVP workflow pipeline">
+              <div class="pipeline-step">1<br><span>Goal Input</span></div>
+              <div class="pipeline-step">2<br><span>Upload & Validate</span></div>
+              <div class="pipeline-step">3<br><span>Text Extraction</span></div>
+              <div class="pipeline-step">4<br><span>AI Summarization</span></div>
+              <div class="pipeline-step">5<br><span>Relevance Check</span></div>
+              <div class="pipeline-step">6<br><span>Path Generation</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sprints" class="section-pad pt-0">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-end gap-3 flex-wrap mb-3">
+        <div>
+          <p class="eyebrow mb-1">AGILE SCHEDULE</p>
+          <h2 class="section-title mb-0">Planned Development Sprints</h2>
+        </div>
+        <span class="az-chip">Minimum required: 3 sprints (Handbook compliant)</span>
+      </div>
+      <div class="row g-3" id="sprintCards"></div>
+    </div>
+  </section>
+
+  <section id="board" class="section-pad pt-0">
+    <div class="container-fluid px-3 px-lg-4">
+      <div class="d-flex justify-content-between align-items-end gap-3 flex-wrap mb-3">
+        <div>
+          <p class="eyebrow mb-1">BACKLOG STATUS</p>
+          <h2 class="section-title mb-0">Agile Task Board</h2>
+        </div>
+        <div class="board-meta">Last updated: <span id="lastUpdated"></span></div>
+      </div>
+      <div class="row g-3 kanban-board" id="kanbanBoard" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="priorities" class="section-pad pt-0">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-end gap-3 flex-wrap mb-3">
+        <div>
+          <p class="eyebrow mb-1">OPTIONAL FEATURES</p>
+          <h2 class="section-title mb-0">Backlog Prioritization</h2>
+        </div>
+        <span class="az-chip">Deferred until core MVP is stable</span>
+      </div>
+      <div class="row g-3" id="scopeLadder"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="az-footer py-4 mt-4">
+  <div class="container d-flex flex-column flex-md-row justify-content-between gap-2 align-items-center">
+    <span>© 2026 Study-and-Learn Capstone Project</span>
+    <span class="footer-note">Static evidence board for agile tracking and handbook compliance</span>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
