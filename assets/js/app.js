@@ -58,7 +58,7 @@ const CONFIG = {
       id: "US-001",
       title: "As a developer, I want a documented project setup so I can run the app locally.",
       sprint: "Sprint 1",
-      status: "In Progress",
+      status: "Done",
       tasks: [
         ["Build Flask project structure", ["Flask", "Sprint 1"]],
         ["Add homepage route", ["Backend", "MVP"]],
@@ -69,7 +69,7 @@ const CONFIG = {
       id: "US-002",
       title: "As a developer, I want automated tests in CI so I can prove basic reliability.",
       sprint: "Sprint 1",
-      status: "In Progress",
+      status: "Done",
       tasks: [
         ["Add first basic pytest test", ["Testing", "CI/CD"]],
         ["Add GitHub Actions workflow for tests", ["CI/CD", "Automation"]]
@@ -79,7 +79,7 @@ const CONFIG = {
       id: "US-003",
       title: "As a reviewer, I want a public task board so I can see project progress.",
       sprint: "Sprint 1",
-      status: "In Progress",
+      status: "Done",
       tasks: [
         ["Publish static task board via GitHub Pages", ["DevOps", "Evidence"]],
         ["Add public task board link to README.md", ["Docs", "Evidence"]]
@@ -89,7 +89,7 @@ const CONFIG = {
       id: "US-004",
       title: "As a learner, I want to enter a learning goal so the app knows what I want to study.",
       sprint: "Sprint 1",
-      status: "Ready",
+      status: "Done",
       tasks: [
         ["Add learning goal input form", ["Frontend", "MVP"]],
         ["Validate non-empty goal submission", ["Backend", "Validation"]]
@@ -99,7 +99,7 @@ const CONFIG = {
       id: "US-005",
       title: "As a learner, I want to upload study materials so the app can analyze them.",
       sprint: "Sprint 1",
-      status: "Ready",
+      status: "Done",
       tasks: [
         ["Add document upload form", ["Frontend", "MVP"]],
         ["Add file type validation (.txt, .md, .pdf, .docx)", ["Backend", "Security"]],
@@ -110,7 +110,7 @@ const CONFIG = {
       id: "US-006",
       title: "As a learner, I want to see upload status so I know whether my files were accepted.",
       sprint: "Sprint 1",
-      status: "Backlog",
+      status: "Done",
       tasks: [
         ["Add success/error flash messages", ["UX", "MVP"]],
         ["List uploaded files with processing status", ["Frontend", "Feedback"]]
@@ -120,7 +120,7 @@ const CONFIG = {
       id: "US-007",
       title: "As a learner, I want uploaded documents converted into text so the app can analyze them.",
       sprint: "Sprint 2",
-      status: "Backlog",
+      status: "In Progress",
       tasks: [
         ["Implement .txt parser", ["Parser", "MVP"]],
         ["Implement .md parser", ["Parser", "MVP"]],
@@ -132,7 +132,7 @@ const CONFIG = {
       id: "US-009",
       title: "As a learner, I want a summary of my materials so I can understand what they contain.",
       sprint: "Sprint 2",
-      status: "Backlog",
+      status: "Ready",
       tasks: [
         ["Create AI client wrapper for Ollama", ["AI", "Architecture"]],
         ["Create summary prompt template", ["Prompt Engineering", "AI"]],
@@ -142,7 +142,7 @@ const CONFIG = {
     },
     {
       id: "US-010",
-      title: "As a learner, I want to know whether my documents match my goal.",
+      title: "As a learner, I want to know whether my documents match my learning goal.",
       sprint: "Sprint 3",
       status: "Backlog",
       tasks: [
