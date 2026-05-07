@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Public capstone task board for Study-and-Learn by Azthreus Systems." />
+<meta name="description" content="Public capstone task board for Study-and-Learn." />
 <title>Study-and-Learn // Capstone Task Board</title>
 <link rel="icon" type="image/png" href="assets/images/logo-v2.png" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -11,6 +11,8 @@
 </head>
 <body>
 <div class="scanlines" aria-hidden="true"></div>
+
+<!-- NAVIGATION -->
 <nav class="navbar navbar-expand-lg az-navbar sticky-top">
   <div class="container-fluid px-3 px-lg-4">
     <a class="navbar-brand d-flex align-items-center gap-2" href="#top" aria-label="Project home">
@@ -23,7 +25,6 @@
     <div class="collapse navbar-collapse" id="mainNav">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item"><a class="nav-link" href="#objective">Objective</a></li>
-        <li class="nav-item"><a class="nav-link" href="#workflow">Workflow</a></li>
         <li class="nav-item"><a class="nav-link" href="#sprints">Sprints</a></li>
         <li class="nav-item"><a class="nav-link" href="#board">Board</a></li>
         <li class="nav-item"><a class="nav-link" href="#priorities">Backlog</a></li>
@@ -32,6 +33,7 @@
   </div>
 </nav>
 
+<!-- HERO -->
 <header id="top" class="hero-shell py-5">
   <div class="container py-lg-4">
     <div class="row align-items-center g-4">
@@ -58,6 +60,7 @@
 </header>
 
 <main>
+  <!-- OBJECTIVE -->
   <section id="objective" class="section-pad">
     <div class="container">
       <div class="row g-4">
@@ -70,7 +73,7 @@
         </div>
         <div class="col-lg-8">
           <div class="az-panel h-100">
-            <h2 class="section-title">Workflow Pipeline</h2>
+            <h2 class="section-title">Core Workflow</h2>
             <div class="pipeline-grid" aria-label="MVP workflow pipeline">
               <div class="pipeline-step">1<br><span>Goal Input</span></div>
               <div class="pipeline-step">2<br><span>Upload & Validate</span></div>
@@ -85,6 +88,7 @@
     </div>
   </section>
 
+  <!-- SPRINTS -->
   <section id="sprints" class="section-pad pt-0">
     <div class="container">
       <div class="d-flex justify-content-between align-items-end gap-3 flex-wrap mb-3">
@@ -92,12 +96,13 @@
           <p class="eyebrow mb-1">AGILE SCHEDULE</p>
           <h2 class="section-title mb-0">Planned Development Sprints</h2>
         </div>
-        <span class="az-chip">Minimum required: 3 sprints (Handbook compliant)</span>
+        <span class="az-chip">Agile schedule: 3+ sprints</span>
       </div>
       <div class="row g-3" id="sprintCards"></div>
     </div>
   </section>
 
+  <!-- KANBAN BOARD -->
   <section id="board" class="section-pad pt-0">
     <div class="container-fluid px-3 px-lg-4">
       <div class="d-flex justify-content-between align-items-end gap-3 flex-wrap mb-3">
@@ -111,6 +116,7 @@
     </div>
   </section>
 
+  <!-- SCOPE LADDER / BACKLOG PRIORITIZATION -->
   <section id="priorities" class="section-pad pt-0">
     <div class="container">
       <div class="d-flex justify-content-between align-items-end gap-3 flex-wrap mb-3">
@@ -128,7 +134,7 @@
 <footer class="az-footer py-4 mt-4">
   <div class="container d-flex flex-column flex-md-row justify-content-between gap-2 align-items-center">
     <span>© 2026 Study-and-Learn Capstone Project</span>
-    <span class="footer-note">Static evidence board for agile tracking and handbook compliance</span>
+    <span class="footer-note">Static board for agile progress tracking</span>
   </div>
 </footer>
 

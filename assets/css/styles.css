@@ -105,8 +105,7 @@ body {
 .mascot-card,
 .sprint-card,
 .scope-card,
-.kanban-column,
-.deliverable-item {
+.kanban-column {
   background: linear-gradient(135deg, rgba(30, 58, 95, 0.86), rgba(16, 39, 66, 0.72));
   border: 1px solid var(--az-border);
   border-radius: 18px;
@@ -164,32 +163,12 @@ body {
 .kanban-title { color: var(--az-cyan-light); font-weight: 900; letter-spacing: 0.02em; margin: 0; }
 .task-count { color: var(--az-cyan); font-weight: 800; }
 
-.task-card {
-  background: rgba(5, 11, 20, 0.48);
-  border: 1px solid rgba(144, 224, 239, 0.18);
-  border-left: 4px solid var(--az-cyan);
-  border-radius: 14px;
-  padding: 0.75rem;
-  margin-bottom: 0.75rem;
-}
 
-.task-title { color: #fff; font-weight: 800; margin-bottom: 0.35rem; }
-.task-desc { color: var(--az-muted); font-size: 0.9rem; margin-bottom: 0.55rem; }
-.task-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-.task-tag { font-size: 0.72rem; color: var(--az-cyan-light); border: 1px solid rgba(0,180,216,0.28); border-radius: 999px; padding: 0.18rem 0.45rem; }
-
-.task-card.done { border-left-color: var(--az-success); }
-.task-card.in-progress { border-left-color: var(--az-warning); }
-.task-card.blocked { border-left-color: var(--az-danger); }
 
 .scope-card { padding: 1rem; height: 100%; }
 .scope-level { color: var(--az-cyan); font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.8rem; }
 .scope-card ul { margin-bottom: 0; color: var(--az-muted); }
 
-.deliverable-item { padding: 0.9rem; height: 100%; display: flex; gap: 0.75rem; align-items: flex-start; }
-.checkmark { color: var(--az-success); font-weight: 900; }
-.deliverable-title { color: #fff; font-weight: 800; }
-.deliverable-note { color: var(--az-muted); font-size: 0.88rem; }
 
 .az-footer {
   color: var(--az-cyan-light);
@@ -207,3 +186,150 @@ body {
   .hero-title { font-size: 2.5rem; }
   .section-pad { padding: 3rem 0; }
 }
+
+/* ===== TASK BOARD STYLES ===== */
+.story-card {
+  background: rgba(5, 11, 20, 0.6);
+  border: 1px solid var(--az-border);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid var(--az-cyan);
+}
+.story-card.done { border-left-color: var(--az-success); }
+.story-card.in-progress { border-left-color: var(--az-warning); }
+.story-card.ready { border-left-color: var(--az-cyan-light); }
+.story-card.backlog { border-left-color: var(--az-border); }
+
+.story-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed var(--az-border);
+}
+.story-id {
+  background: var(--az-cyan);
+  color: var(--az-dark);
+  font-weight: 900;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+.story-title {
+  color: var(--az-silver);
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin: 0;
+  line-height: 1.3;
+}
+.story-tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.task-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.6rem;
+  background: rgba(30, 58, 95, 0.4);
+  border-radius: 8px;
+  border-left: 3px solid var(--az-cyan);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.task-card:hover {
+  background: rgba(30, 58, 95, 0.6);
+  transform: translateX(2px);
+}
+.task-card.completed {
+  border-left-color: var(--az-success);
+  opacity: 0.85;
+}
+.task-card.completed .task-desc {
+  text-decoration: line-through;
+  color: var(--az-muted);
+}
+.task-card:focus {
+  outline: 2px solid var(--az-cyan);
+  outline-offset: 2px;
+}
+
+.task-check {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+.task-content {
+  flex: 1;
+  min-width: 0;
+}
+.task-desc {
+  color: var(--az-silver);
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+  line-height: 1.3;
+}
+.task-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+.task-tag {
+  font-size: 0.7rem;
+  color: var(--az-cyan-light);
+  border: 1px solid rgba(0,180,216,0.3);
+  border-radius: 999px;
+  padding: 0.15rem 0.4rem;
+  background: rgba(0, 180, 216, 0.08);
+}
+
+/* Kanban Columns */
+.kanban-column {
+  padding: 1rem;
+  min-height: 420px;
+  background: rgba(5, 11, 20, 0.3);
+  border-radius: 12px;
+}
+.kanban-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed var(--az-border);
+}
+
+/* Sprint status indicators */
+.sprint-card.done { border-left: 4px solid var(--az-success); }
+.sprint-card.in-progress { border-left: 4px solid var(--az-warning); }
+.sprint-card.ready { border-left: 4px solid var(--az-cyan); }
+.sprint-card.next { border-left: 4px solid var(--az-cyan-light); }
+.sprint-card.planning { border-left: 4px solid var(--az-muted); }
+.sprint-card.backlog { border-left: 4px solid var(--az-border); }
+
+/* Scope Ladder */
+.scope-card {
+  padding: 1rem;
+  height: 100%;
+  background: rgba(5, 11, 20, 0.4);
+  border: 1px solid var(--az-border);
+  border-radius: 12px;
+}
+.scope-level {
+  color: var(--az-cyan);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+.scope-card ul {
+  margin-bottom: 0;
+  color: var(--az-muted);
+  padding-left: 1.2rem;
+}
+
