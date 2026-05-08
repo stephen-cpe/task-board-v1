@@ -76,7 +76,7 @@ function renderStory(story) {
         <h4 class="story-title">${story.title}</h4>
       </div>
       <div class="story-tasks">
-        ${story.tasks.map((task) => {
+        ${story.tasks ? story.tasks.map((task) => {
           const [desc, tags] = task;
           return `
             <div class="task-card ${isDone ? 'completed' : ''}">
@@ -87,7 +87,12 @@ function renderStory(story) {
               </div>
             </div>
           `;
-        }).join("")}
+        }).join("") : `<div class="task-card ${isDone ? 'completed' : ''}">
+          <span class="task-check">${isDone ? '✅' : '⬜'}</span>
+          <div class="task-content">
+            <div class="task-desc ${isDone ? 'strikethrough' : ''}">Sprint: ${story.sprint}</div>
+          </div>
+        </div>`}
       </div>
     </article>
   `;
@@ -148,26 +153,9 @@ function switchToSnapshot(snapshot) {
       <section class="kanban-column">
         <div class="kanban-header">
           <h3 class="h6 kanban-title">${column}</h3>
-          <span class="task-count">${stories.length}</span>
+          <span class="task-count">${stories.reduce((sum, s) => sum + (s.tasks ? s.tasks.length : 1), 0)}</span>
         </div>
-        ${stories.map(story => {
-          const isDone = story.status === "Done";
-          return `
-          <article class="story-card ${getStatusClass(story.status)}">
-            <div class="story-header">
-              <span class="story-id">${story.id}</span>
-              <h4 class="story-title">${story.title}</h4>
-            </div>
-            <div class="story-tasks">
-              <div class="task-card ${isDone ? 'completed' : ''}">
-                <span class="task-check">${isDone ? '✅' : '⬜'}</span>
-                <div class="task-content">
-                  <div class="task-desc ${isDone ? 'strikethrough' : ''}">Sprint: ${story.sprint}</div>
-                </div>
-              </div>
-            </div>
-          </article>`;
-        }).join("")}
+        ${stories.map(story => renderStory(story)).join("")}
       </section>
     </div>
   `).join("");
