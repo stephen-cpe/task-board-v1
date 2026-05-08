@@ -157,6 +157,20 @@ body {
 .sprint-goal { color: var(--az-muted); }
 
 .board-meta { color: var(--az-muted); font-size: 0.92rem; }
+.snapshot-select {
+  background: rgba(30, 58, 95, 0.8);
+  border: 1px solid var(--az-border);
+  color: var(--az-cyan-light);
+  font-size: 0.85rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.snapshot-select:focus {
+  border-color: var(--az-cyan);
+  outline: none;
+  box-shadow: 0 0 8px var(--az-glow);
+}
 .kanban-board { align-items: stretch; }
 .kanban-column { padding: 1rem; min-height: 420px; }
 .kanban-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; }
