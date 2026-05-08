@@ -8,9 +8,9 @@
  * 3. Commit & push → GitHub Pages auto-updates
  */
 
-// Current active board state
+// Current active board state (May 8, 2026)
 const CONFIG = {
-  lastUpdated: new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }),
+  lastUpdated: "May 8, 2026",
   
   sprints: [
     {
@@ -25,21 +25,21 @@ const CONFIG = {
       name: "Sprint 1",
       title: "Upload & Validation Pipeline",
       goal: "Implement Flask routing, goal input, file upload validation, storage handling, and baseline pytest suite.",
-      status: "In Progress"
+      status: "Done"
     },
     {
       id: "sprint-2",
       name: "Sprint 2", 
       title: "AI Integration & Processing",
       goal: "Develop document parsers, integrate Ollama client wrapper, implement summarization, relevance checking, and study path generation.",
-      status: "Backlog"
+      status: "Done"
     },
     {
       id: "sprint-3",
       name: "Sprint 3",
       title: "Testing, Deployment & Demo Prep",
       goal: "Complete integration tests, optimize UI/UX, deploy to free-tier hosting, finalize design/testing documentation, and record demo.",
-      status: "Backlog"
+      status: "In Progress"
     }
   ],
 
@@ -110,7 +110,7 @@ const CONFIG = {
       id: "US-007",
       title: "As a learner, I want uploaded documents converted into text so the app can analyze them.",
       sprint: "Sprint 2",
-      status: "In Progress",
+      status: "Done",
       tasks: [
         ["Implement .txt parser", ["Parser", "MVP"]],
         ["Implement .md parser", ["Parser", "MVP"]],
@@ -119,10 +119,20 @@ const CONFIG = {
       ]
     },
     {
+      id: "US-008",
+      title: "As a developer, I want parser errors handled clearly so failed documents do not crash the app.",
+      sprint: "Sprint 2",
+      status: "Done",
+      tasks: [
+        ["Add graceful error handling for unsupported/empty files", ["Parser", "MVP"]],
+        ["Add ValueError propagation to routes", ["Backend", "UX"]]
+      ]
+    },
+    {
       id: "US-009",
       title: "As a learner, I want a summary of my materials so I can understand what they contain.",
       sprint: "Sprint 2",
-      status: "Ready",
+      status: "Done",
       tasks: [
         ["Create AI client wrapper for Ollama", ["AI", "Architecture"]],
         ["Create summary prompt template", ["Prompt Engineering", "AI"]],
@@ -132,9 +142,9 @@ const CONFIG = {
     },
     {
       id: "US-010",
-      title: "As a learner, I want to know whether my documents match my learning goal.",
+      title: "As a learner, I want to know whether my documents match my goal.",
       sprint: "Sprint 3",
-      status: "Backlog",
+      status: "Done",
       tasks: [
         ["Create relevance-check prompt", ["AI", "Prompt Engineering"]],
         ["Return relevance label: strong/partial/weak", ["AI", "MVP"]],
@@ -143,14 +153,45 @@ const CONFIG = {
     },
     {
       id: "US-011",
-      title: "As a learner, I want a structured study path so I knows what to study next.",
+      title: "As a learner, I want a structured study path so I know what to study next.",
       sprint: "Sprint 3",
-      status: "Backlog",
+      status: "Done",
       tasks: [
         ["Create curriculum-generation prompt", ["AI", "Prompt Engineering"]],
         ["Generate module list with sequence", ["AI", "MVP"]],
         ["Add estimated effort per module", ["UX", "MVP"]],
         ["Format study path clearly in UI", ["Frontend", "MVP"]]
+      ]
+    },
+    {
+      id: "US-012",
+      title: "As a learner, I want the app to feel simple and guided.",
+      sprint: "Sprint 3",
+      status: "Done",
+      tasks: [
+        ["Implement form → upload → results flow", ["UX", "MVP"]],
+        ["Add loading spinner during AI processing", ["Frontend", "Polish"]]
+      ]
+    },
+    {
+      id: "US-013",
+      title: "As a learner, I want the product to feel friendly and motivating.",
+      sprint: "Sprint 4",
+      status: "In Progress",
+      tasks: [
+        ["Apply retro theme to results page", ["Frontend", "Polish"]],
+        ["Add motivational copy/placeholders", ["UX", "Should-Have"]]
+      ]
+    },
+    {
+      id: "US-014",
+      title: "As a reviewer, I want the demo to show the full workflow.",
+      sprint: "Sprint 4",
+      status: "Ready",
+      tasks: [
+        ["Prepare demo script & sample documents", ["Demo", "MVP"]],
+        ["Deploy to free-tier hosting", ["DevOps", "Deployment"]],
+        ["Record 15-20 min final presentation", ["Evidence", "Submission"]]
       ]
     }
   ],
@@ -165,57 +206,84 @@ const CONFIG = {
 
 // Historical snapshots for viewing previous board states
 const SNAPSHOTS = [
-  {
-    date: "2026-05-07",
-    isCurrent: true,
-    data: null
-  },
-  {
-    date: "2025-05-06",
-    isCurrent: false,
-    data: {
-      sprints: [
-        { name: "Sprint 0", status: "Done", title: "Initialization & Requirements", goal: "Establish repository, finalize SRS/TODO, configure CI baseline, deploy static task board." },
-        { name: "Sprint 1", status: "In Progress", title: "Upload & Validation Pipeline", goal: "Implement Flask routing, goal input, file upload validation, storage handling, and baseline pytest suite." },
-        { name: "Sprint 2", status: "Backlog", title: "AI Integration & Processing", goal: "Develop document parsers, integrate Ollama client wrapper, implement summarization, relevance checking, and study path generation." },
-        { name: "Sprint 3", status: "Backlog", title: "Testing, Deployment & Demo Prep", goal: "Complete integration tests, optimize UI/UX, deploy to free-tier hosting, finalize design/testing documentation, and record demo." }
-      ],
-      userStories: [
-        { id: "US-001", title: "As a developer, I want a documented project setup so I can run the app locally.", status: "Done", sprint: "Sprint 1" },
-        { id: "US-002", title: "As a developer, I want automated tests in CI so I can prove basic reliability.", status: "Done", sprint: "Sprint 1" },
-        { id: "US-003", title: "As a reviewer, I want a public task board so I can see project progress.", status: "Done", sprint: "Sprint 1" },
-        { id: "US-004", title: "As a learner, I want to enter a learning goal so the app knows what I want to study.", status: "In Progress", sprint: "Sprint 1" },
-        { id: "US-005", title: "As a learner, I want to upload study materials so the app can analyze them.", status: "In Progress", sprint: "Sprint 1" },
-        { id: "US-006", title: "As a learner, I want to see upload status so I know whether my files were accepted.", status: "In Progress", sprint: "Sprint 1" },
-        { id: "US-007", title: "As a learner, I want uploaded documents converted into text so the app can analyze them.", status: "Backlog", sprint: "Sprint 2" },
-        { id: "US-009", title: "As a learner, I want a summary of my materials so I can understand what they contain.", status: "Backlog", sprint: "Sprint 2" },
-        { id: "US-010", title: "As a learner, I want to know whether my documents match my learning goal.", status: "Backlog", sprint: "Sprint 3" },
-        { id: "US-011", title: "As a learner, I want a structured study path so I know what to study next.", status: "Backlog", sprint: "Sprint 3" }
-      ]
-    }
-  },
-  {
-    date: "2025-05-04",
-    isCurrent: false,
-    data: {
-      sprints: [
-        { name: "Sprint 0", status: "Planning", title: "Initialization & Requirements", goal: "Establish repository, finalize SRS/TODO, configure CI baseline, deploy static task board." },
-        { name: "Sprint 1", status: "Backlog", title: "Upload & Validation Pipeline", goal: "Implement Flask routing, goal input, file upload validation, storage handling, and baseline pytest suite." },
-        { name: "Sprint 2", status: "Backlog", title: "AI Integration & Processing", goal: "Develop document parsers, integrate Ollama client wrapper, implement summarization, relevance checking, and study path generation." },
-        { name: "Sprint 3", status: "Backlog", title: "Testing, Deployment & Demo Prep", goal: "Complete integration tests, optimize UI/UX, deploy to free-tier hosting, finalize design/testing documentation, and record demo." }
-      ],
-      userStories: [
-        { id: "US-001", title: "As a developer, I want a documented project setup so I can run the app locally.", status: "Backlog", sprint: "Sprint 1" },
-        { id: "US-002", title: "As a developer, I want automated tests in CI so I can prove basic reliability.", status: "Backlog", sprint: "Sprint 1" },
-        { id: "US-003", title: "As a reviewer, I want a public task board so I can see project progress.", status: "Backlog", sprint: "Sprint 1" },
-        { id: "US-004", title: "As a learner, I want to enter a learning goal so the app knows what I want to study.", status: "Backlog", sprint: "Sprint 1" },
-        { id: "US-005", title: "As a learner, I want to upload study materials so the app can analyze them.", status: "Backlog", sprint: "Sprint 1" },
-        { id: "US-006", title: "As a learner, I want to see upload status so I know whether my files were accepted.", status: "Backlog", sprint: "Sprint 1" },
-        { id: "US-007", title: "As a learner, I want uploaded documents converted into text so the app can analyze them.", status: "Backlog", sprint: "Sprint 2" },
-        { id: "US-009", title: "As a learner, I want a summary of my materials so I can understand what they contain.", status: "Backlog", sprint: "Sprint 2" },
-        { id: "US-010", title: "As a learner, I want to know whether my documents match my learning goal.", status: "Backlog", sprint: "Sprint 3" },
-        { id: "US-011", title: "As a learner, I want a structured study path so I know what to study next.", status: "Backlog", sprint: "Sprint 3" }
-      ]
-    }
-  }
+  // May 8, 2026 - Today (same as CONFIG)
+  { date: "2026-05-08", isCurrent: true, data: null },
+  
+  // May 7, 2026 - Yesterday (US-007 in progress, US-009 ready, rest backlog + new stories in backlog)
+  { date: "2026-05-07", isCurrent: false, data: {
+    sprints: [
+      { name: "Sprint 0", status: "Done", title: "Initialization & Requirements", goal: "Establish repository, finalize SRS/TODO, configure CI baseline, deploy static task board." },
+      { name: "Sprint 1", status: "Done", title: "Upload & Validation Pipeline", goal: "Implement Flask routing, goal input, file upload validation, storage handling, and baseline pytest suite." },
+      { name: "Sprint 2", status: "Done", title: "AI Integration & Processing", goal: "Develop document parsers, integrate Ollama client wrapper, implement summarization, relevance checking, and study path generation." },
+      { name: "Sprint 3", status: "In Progress", title: "Testing, Deployment & Demo Prep", goal: "Complete integration tests, optimize UI/UX, deploy to free-tier hosting, finalize design/testing documentation, and record demo." }
+    ],
+    userStories: [
+      { id: "US-001", title: "As a developer, I want a documented project setup so I can run the app locally.", status: "Done", sprint: "Sprint 1" },
+      { id: "US-002", title: "As a developer, I want automated tests in CI so I can prove basic reliability.", status: "Done", sprint: "Sprint 1" },
+      { id: "US-003", title: "As a reviewer, I want a public task board so I can see project progress.", status: "Done", sprint: "Sprint 1" },
+      { id: "US-004", title: "As a learner, I want to enter a learning goal so the app knows what I want to study.", status: "Done", sprint: "Sprint 1" },
+      { id: "US-005", title: "As a learner, I want to upload study materials so the app can analyze them.", status: "Done", sprint: "Sprint 1" },
+      { id: "US-006", title: "As a learner, I want to see upload status so I know whether my files were accepted.", status: "Done", sprint: "Sprint 1" },
+      { id: "US-007", title: "As a learner, I want uploaded documents converted into text so the app can analyze them.", status: "In Progress", sprint: "Sprint 2" },
+      { id: "US-008", title: "As a developer, I want parser errors handled clearly so failed documents do not crash the app.", status: "Backlog", sprint: "Sprint 2" },
+      { id: "US-009", title: "As a learner, I want a summary of my materials so I can understand what they contain.", status: "Ready", sprint: "Sprint 2" },
+      { id: "US-010", title: "As a learner, I want to know whether my documents match my goal.", status: "Backlog", sprint: "Sprint 3" },
+      { id: "US-011", title: "As a learner, I want a structured study path so I know what to study next.", status: "Backlog", sprint: "Sprint 3" },
+      { id: "US-012", title: "As a learner, I want the app to feel simple and guided.", status: "Backlog", sprint: "Sprint 3" },
+      { id: "US-013", title: "As a learner, I want the product to feel friendly and motivating.", status: "Backlog", sprint: "Sprint 4" },
+      { id: "US-014", title: "As a reviewer, I want the demo to show the full workflow.", status: "Backlog", sprint: "Sprint 4" }
+    ]
+  }},
+  
+  // May 6, 2025 - All new stories in Backlog
+  { date: "2025-05-06", isCurrent: false, data: {
+    sprints: [
+      { name: "Sprint 0", status: "Done", title: "Initialization & Requirements", goal: "Establish repository, finalize SRS/TODO, configure CI baseline, deploy static task board." },
+      { name: "Sprint 1", status: "In Progress", title: "Upload & Validation Pipeline", goal: "Implement Flask routing, goal input, file upload validation, storage handling, and baseline pytest suite." },
+      { name: "Sprint 2", status: "Backlog", title: "AI Integration & Processing", goal: "Develop document parsers, integrate Ollama client wrapper, implement summarization, relevance checking, and study path generation." },
+      { name: "Sprint 3", status: "Backlog", title: "Testing, Deployment & Demo Prep", goal: "Complete integration tests, optimize UI/UX, deploy to free-tier hosting, finalize design/testing documentation, and record demo." }
+    ],
+    userStories: [
+      { id: "US-001", title: "As a developer, I want a documented project setup so I can run the app locally.", status: "Done", sprint: "Sprint 1" },
+      { id: "US-002", title: "As a developer, I want automated tests in CI so I can prove basic reliability.", status: "Done", sprint: "Sprint 1" },
+      { id: "US-003", title: "As a reviewer, I want a public task board so I can see project progress.", status: "Done", sprint: "Sprint 1" },
+      { id: "US-004", title: "As a learner, I want to enter a learning goal so the app knows what I want to study.", status: "In Progress", sprint: "Sprint 1" },
+      { id: "US-005", title: "As a learner, I want to upload study materials so the app can analyze them.", status: "In Progress", sprint: "Sprint 1" },
+      { id: "US-006", title: "As a learner, I want to see upload status so I know whether my files were accepted.", status: "In Progress", sprint: "Sprint 1" },
+      { id: "US-007", title: "As a learner, I want uploaded documents converted into text so the app can analyze them.", status: "Backlog", sprint: "Sprint 2" },
+      { id: "US-008", title: "As a developer, I want parser errors handled clearly so failed documents do not crash the app.", status: "Backlog", sprint: "Sprint 2" },
+      { id: "US-009", title: "As a learner, I want a summary of my materials so I can understand what they contain.", status: "Backlog", sprint: "Sprint 2" },
+      { id: "US-010", title: "As a learner, I want to know whether my documents match my goal.", status: "Backlog", sprint: "Sprint 3" },
+      { id: "US-011", title: "As a learner, I want a structured study path so I know what to study next.", status: "Backlog", sprint: "Sprint 3" },
+      { id: "US-012", title: "As a learner, I want the app to feel simple and guided.", status: "Backlog", sprint: "Sprint 3" },
+      { id: "US-013", title: "As a learner, I want the product to feel friendly and motivating.", status: "Backlog", sprint: "Sprint 4" },
+      { id: "US-014", title: "As a reviewer, I want the demo to show the full workflow.", status: "Backlog", sprint: "Sprint 4" }
+    ]
+  }},
+  
+  // May 4, 2025 - All stories in Backlog
+  { date: "2025-05-04", isCurrent: false, data: {
+    sprints: [
+      { name: "Sprint 0", status: "Planning", title: "Initialization & Requirements", goal: "Establish repository, finalize SRS/TODO, configure CI baseline, deploy static task board." },
+      { name: "Sprint 1", status: "Backlog", title: "Upload & Validation Pipeline", goal: "Implement Flask routing, goal input, file upload validation, storage handling, and baseline pytest suite." },
+      { name: "Sprint 2", status: "Backlog", title: "AI Integration & Processing", goal: "Develop document parsers, integrate Ollama client wrapper, implement summarization, relevance checking, and study path generation." },
+      { name: "Sprint 3", status: "Backlog", title: "Testing, Deployment & Demo Prep", goal: "Complete integration tests, optimize UI/UX, deploy to free-tier hosting, finalize design/testing documentation, and record demo." }
+    ],
+    userStories: [
+      { id: "US-001", title: "As a developer, I want a documented project setup so I can run the app locally.", status: "Backlog", sprint: "Sprint 1" },
+      { id: "US-002", title: "As a developer, I want automated tests in CI so I can prove basic reliability.", status: "Backlog", sprint: "Sprint 1" },
+      { id: "US-003", title: "As a reviewer, I want a public task board so I can see project progress.", status: "Backlog", sprint: "Sprint 1" },
+      { id: "US-004", title: "As a learner, I want to enter a learning goal so the app knows what I want to study.", status: "Backlog", sprint: "Sprint 1" },
+      { id: "US-005", title: "As a learner, I want to upload study materials so the app can analyze them.", status: "Backlog", sprint: "Sprint 1" },
+      { id: "US-006", title: "As a learner, I want to see upload status so I know whether my files were accepted.", status: "Backlog", sprint: "Sprint 1" },
+      { id: "US-007", title: "As a learner, I want uploaded documents converted into text so the app can analyze them.", status: "Backlog", sprint: "Sprint 2" },
+      { id: "US-008", title: "As a developer, I want parser errors handled clearly so failed documents do not crash the app.", status: "Backlog", sprint: "Sprint 2" },
+      { id: "US-009", title: "As a learner, I want a summary of my materials so I can understand what they contain.", status: "Backlog", sprint: "Sprint 2" },
+      { id: "US-010", title: "As a learner, I want to know whether my documents match my goal.", status: "Backlog", sprint: "Sprint 3" },
+      { id: "US-011", title: "As a learner, I want a structured study path so I know what to study next.", status: "Backlog", sprint: "Sprint 3" },
+      { id: "US-012", title: "As a learner, I want the app to feel simple and guided.", status: "Backlog", sprint: "Sprint 3" },
+      { id: "US-013", title: "As a learner, I want the product to feel friendly and motivating.", status: "Backlog", sprint: "Sprint 4" },
+      { id: "US-014", title: "As a reviewer, I want the demo to show the full workflow.", status: "Backlog", sprint: "Sprint 4" }
+    ]
+  }}
 ];
