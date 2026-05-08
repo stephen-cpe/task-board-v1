@@ -99,9 +99,10 @@ function renderStory(story) {
 }
 
 
-function renderScopeLadder() {
+function renderScopeLadder(scopeLadderData) {
   const root = document.getElementById("scopeLadder");
-  root.innerHTML = CONFIG.scopeLadder.map(([level, items]) => `
+  const data = scopeLadderData || CONFIG.scopeLadder;
+  root.innerHTML = data.map(([level, items]) => `
     <div class="col-md-6 col-xl-3">
       <article class="scope-card">
         <div class="scope-level">${level}</div>
@@ -125,6 +126,7 @@ function switchToSnapshot(snapshot) {
     document.getElementById("lastUpdated").textContent = CONFIG.lastUpdated;
     renderSprints();
     renderBoard();
+    renderScopeLadder();
     return;
   }
 
@@ -159,6 +161,11 @@ function switchToSnapshot(snapshot) {
       </section>
     </div>
   `).join("");
+
+  // Render scopeLadder from snapshot
+  if (data.scopeLadder) {
+    renderScopeLadder(data.scopeLadder);
+  }
 }
 
 // Initialize dropdown
