@@ -171,8 +171,12 @@ body {
   outline: none;
   box-shadow: 0 0 8px var(--az-glow);
 }
-.kanban-board { align-items: stretch; }
-.kanban-column { padding: 1rem; min-height: 420px; }
+.kanban-board { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 1rem; padding-bottom: 1rem; }
+.kanban-column { min-width: 280px; max-width: 320px; flex-shrink: 0; padding: 1rem; min-height: 420px; }
+
+.column-scroll { max-height: 60vh; overflow-y: auto; padding-right: 4px; }
+.column-scroll::-webkit-scrollbar { width: 4px; }
+.column-scroll::-webkit-scrollbar-thumb { background: var(--az-border); border-radius: 4px; }
 .kanban-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; }
 .kanban-title { color: var(--az-cyan-light); font-weight: 900; letter-spacing: 0.02em; margin: 0; }
 .task-count { color: var(--az-cyan); font-weight: 800; }
@@ -207,7 +211,7 @@ body {
   border: 1px solid var(--az-border);
   border-radius: 12px;
   padding: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   border-left: 4px solid var(--az-cyan);
 }
 .story-card.done { border-left-color: var(--az-success); }
@@ -222,6 +226,17 @@ body {
   margin-bottom: 0.75rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px dashed var(--az-border);
+  cursor: pointer;
+}
+.story-header::after {
+  content: "▼";
+  margin-left: auto;
+  font-size: 0.7rem;
+  transition: transform 0.2s;
+  color: var(--az-cyan);
+}
+.story-card.expanded .story-header::after {
+  transform: rotate(180deg);
 }
 .story-id {
   background: var(--az-cyan);
@@ -240,6 +255,12 @@ body {
   line-height: 1.3;
 }
 .story-tasks {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+}
+.story-card.expanded .story-tasks {
+  max-height: 800px;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -304,6 +325,9 @@ body {
 
 /* Kanban Columns */
 .kanban-column {
+  min-width: 280px;
+  max-width: 320px;
+  flex-shrink: 0;
   padding: 1rem;
   min-height: 420px;
   background: rgba(5, 11, 20, 0.3);

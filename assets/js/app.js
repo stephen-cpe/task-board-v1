@@ -29,7 +29,7 @@ function renderSprints() {
   root.innerHTML = CONFIG.sprints.map(sprint => `
     <div class="col-md-6 col-xl-3">
       <article class="sprint-card ${getStatusClass(sprint.status)}">
-        <div class="sprint-kicker">${sprint.name} // ${sprint.status}</div>
+        <div class="sprint-kicker">${sprint.id} // ${sprint.status}</div>
         <h3 class="h5 sprint-title mt-2">${sprint.title}</h3>
         <p class="sprint-goal mb-0">${sprint.goal}</p>
       </article>
@@ -37,31 +37,21 @@ function renderSprints() {
   `).join("");
 }
 
-function renderBoard() {
+function renderBoard(filterSprint = "All") {
   const root = document.getElementById("kanbanBoard");
+  const stories = CONFIG.userStories.filter(s => filterSprint === "All" || s.sprint === filterSprint);
   
-  // Group stories by status for kanban columns
-  const columns = {
-    "Backlog": [],
-    "Ready": [], 
-    "In Progress": [],
-    "Done": []
-  };
-  
-  CONFIG.userStories.forEach(story => {
-    if (columns[story.status]) {
-      columns[story.status].push(story);
-    }
-  });
-  
-  root.innerHTML = Object.entries(columns).map(([column, stories]) => `
-    <div class="col-md-6 col-xl">
+  const columns = { "Backlog": [], "Ready": [], "In Progress": [], "Done": [], "Planned": [] };
+  stories.forEach(story => { if (columns[story.status]) columns[story.status].push(story); });
+
+  root.innerHTML = Object.entries(columns).map(([column, sList]) => `
+    <div class="col-12 col-md-6 col-xl">
       <section class="kanban-column">
         <div class="kanban-header">
           <h3 class="h6 kanban-title">${column}</h3>
-          <span class="task-count">${stories.reduce((sum, s) => sum + s.tasks.length, 0)}</span>
+          <span class="task-count">${sList.length}</span>
         </div>
-        ${stories.map(story => renderStory(story)).join("")}
+        <div class="column-scroll">${sList.map(renderStory).join("")}</div>
       </section>
     </div>
   `).join("");
@@ -114,16 +104,29 @@ function renderScopeLadder(scopeLadderData) {
   `).join("");
 }
 
+function renderSprintFilter() {
+  const sel = document.getElementById("sprintFilter");
+  if (!sel) return;
+  sel.innerHTML = '<option value="All">All Sprints</option>' +
+    CONFIG.sprints.map(s => `<option value="${s.id}">${s.id}</option>`).join("");
+}
+
 // Initialize all sections
 document.getElementById("lastUpdated").textContent = CONFIG.lastUpdated;
 renderSprints();
 renderBoard();
 renderScopeLadder();
+renderSprintFilter();
+
+// Sprint filter change handler
+document.getElementById("sprintFilter")?.addEventListener("change", (e) => renderBoard(e.target.value));
 
 // Snapshot system - switches board to historical state
 function switchToSnapshot(snapshot) {
+  const sprintFilter = document.getElementById("sprintFilter");
   if (snapshot.isCurrent || !snapshot.data) {
     document.getElementById("lastUpdated").textContent = CONFIG.lastUpdated;
+    if (sprintFilter) sprintFilter.disabled = false;
     renderSprints();
     renderBoard();
     renderScopeLadder();
@@ -132,6 +135,10 @@ function switchToSnapshot(snapshot) {
 
   const data = snapshot.data;
   document.getElementById("lastUpdated").textContent = `Snapshot: ${snapshot.date}`;
+  if (sprintFilter) {
+    sprintFilter.value = "All";
+    sprintFilter.disabled = true;
+  }
 
   const rootSprints = document.getElementById("sprintCards");
   rootSprints.innerHTML = data.sprints.map(sprint => `
@@ -144,25 +151,24 @@ function switchToSnapshot(snapshot) {
     </div>
   `).join("");
 
-  const columns = { "Backlog": [], "Ready": [], "In Progress": [], "Done": [] };
+  const columns = { "Backlog": [], "Ready": [], "In Progress": [], "Done": [], "Planned": [] };
   data.userStories.forEach(story => {
     if (columns[story.status]) columns[story.status].push(story);
   });
 
   const rootBoard = document.getElementById("kanbanBoard");
-  rootBoard.innerHTML = Object.entries(columns).map(([column, stories]) => `
-    <div class="col-md-6 col-xl">
+  rootBoard.innerHTML = Object.entries(columns).map(([column, sList]) => `
+    <div class="col-12 col-md-6 col-xl">
       <section class="kanban-column">
         <div class="kanban-header">
           <h3 class="h6 kanban-title">${column}</h3>
-          <span class="task-count">${stories.reduce((sum, s) => sum + (s.tasks ? s.tasks.length : 1), 0)}</span>
+          <span class="task-count">${sList.length}</span>
         </div>
-        ${stories.map(story => renderStory(story)).join("")}
+        <div class="column-scroll">${sList.map(renderStory).join("")}</div>
       </section>
     </div>
   `).join("");
 
-  // Render scopeLadder from snapshot
   if (data.scopeLadder) {
     renderScopeLadder(data.scopeLadder);
   }
@@ -179,3 +185,12 @@ SNAPSHOTS.forEach((snap, index) => {
   selector.appendChild(opt);
 });
 selector.addEventListener("change", (e) => switchToSnapshot(SNAPSHOTS[e.target.value]));
+
+// Collapsible story cards
+document.addEventListener("click", (e) => {
+  const header = e.target.closest(".story-header");
+  if (header) {
+    const card = header.closest(".story-card");
+    card?.classList.toggle("expanded");
+  }
+});
