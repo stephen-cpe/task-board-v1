@@ -3,12 +3,12 @@
  * Contains all task board data - sprints, user stories, and historical snapshots
  */
 const CONFIG = {
-  lastUpdated: "May 12, 2026",
+  lastUpdated: "May 14, 2026",
   sprints: [
     { id: "Sprint 1", title: "Foundation & Architecture", goal: "Flask setup, CI/CD, upload pipeline, baseline testing, static board.", status: "Done" },
     { id: "Sprint 2", title: "Core AI & RAG Pipeline", goal: "Document parsing, chunking, ChromaDB, Ollama integration, summary/relevance/study path.", status: "Done" },
     { id: "Sprint 3", title: "Interactive Learning Engine", goal: "Slide deck generator, mixed-type quizzes, checkpoints, gated progression, AJAX grading.", status: "Done" },
-    { id: "Sprint 4", title: "UX Polish & QA Stabilization", goal: "Fix fill-in-the-blank, mascot positioning, loading feedback, prompt tuning, difficulty selector.", status: "In Progress" },
+    { id: "Sprint 4", title: "UX Polish & QA Stabilization", goal: "Fix fill-in-the-blank, mascot positioning, loading feedback, prompt tuning.", status: "In Progress" },
     { id: "Sprint 5", title: "User Accounts & Session Persistence", goal: "Flask-Login + PostgreSQL, sign-up/sign-in, learner dashboard, max 3 lessons gating, admin access control, Bob/Alice demo accounts.", status: "Planned" },
     { id: "Sprint 6", title: "Polish, Maintenance & Enhancement", goal: "Dashboard UI polish, mascot animations, TTS (opt-in), PDF export, session cleanup, bug fixes.", status: "Planned" },
     { id: "Sprint 7", title: "Advanced Features & OCR", goal: "OCR pipeline for scanned PDFs, lesson badges/trophies, source document linking, cloud deployment prep.", status: "Planned" },
@@ -45,21 +45,21 @@ const CONFIG = {
     // ── Epic 6: UX, Polish, and Retro Experience (Sprint 4) ──
     { id: "US-018", title: "As a learner, I want the app to feel simple, guided, and retro-themed.", sprint: "Sprint 4", status: "Done", tasks: [["Consolidate goal + upload into single unified form (POST /process)", ["Frontend", "MVP"]], ["Improve results page visual hierarchy (timeline, dots, grid)", ["Frontend", "Polish"]], ["Apply retro fonts consistently across all pages", ["Frontend", "Theme"]]] },
     { id: "US-019", title: "As a learner, I want a retro mascot that provides visual feedback.", sprint: "Sprint 4", status: "Done", tasks: [["Integrate mascot-robot.png into UI (bottom-right corner)", ["Frontend", "Mascot"]], ["Add click-to-talk with random messages", ["Frontend", "Mascot"]], ["Display mascot state changes during loading", ["Frontend", "UX"]]] },
-    { id: "US-020", title: "As a learner, I want clear progress feedback during long AI operations.", sprint: "Sprint 4", status: "In Progress", tasks: [["Replace full-screen overlay with background progress bar", ["Frontend", "UX"]], ["Show stage-by-stage progress (e.g., 'Generating Module 2 of 5...')", ["Frontend", "Feedback"]], ["Use mascot to report generation stage/status", ["Frontend", "Mascot"]]] },
-    { id: "US-021", title: "As a learner, I want quality lessons and quizzes appropriate for my level.", sprint: "Sprint 4", status: "In Progress", tasks: [["Test and tune lesson/quiz prompt templates for consistency", ["Prompt Engineering", "AI"]], ["Evaluate qwen3:0.6b quality vs speed tradeoff", ["Research", "AI"]], ["Improve lesson and quiz prompt templates for pedagogy", ["Prompt Engineering", "AI"]]] },
-    { id: "US-022", title: "As a learner, I want a difficulty toggle so content matches my age and skill level.", sprint: "Sprint 4", status: "Ready", tasks: [["Add difficulty selector: Easy (10-11), Moderate (12-13), Hard (14-15)", ["Frontend", "Feature"]], ["Adjust lesson/quiz prompts based on selected difficulty", ["Backend", "Prompt Engineering"]], ["Write tests for difficulty-adjusted prompt construction", ["Testing", "Unit"]]] },
-    { id: "US-025", title: "As a learner, I want fill-in-the-blank questions to accept exactly one word per blank.", sprint: "Sprint 4", status: "In Progress", tasks: [["Implement inline input field per blank (not single input at bottom)", ["Frontend", "Core"]], ["Validate each blank accepts exactly one word (reject spaces)", ["Backend", "Validation"]], ["Add per-blank grading with individual feedback", ["Backend", "Routes"]], ["Write tests for one-word fill-in-the-blank validation", ["Testing", "Unit"]]] },
+    { id: "US-020", title: "As a learner, I want clear progress feedback during long AI operations.", sprint: "Sprint 4", status: "Done", tasks: [["Replace full-screen overlay with background progress bar in mascot speech bubble", ["Frontend", "UX"]], ["Show stage-by-stage progress via mascot messages", ["Frontend", "Feedback"]], ["Use mascot to report generation stage/status", ["Frontend", "Mascot"]]] },
+    { id: "US-021", title: "As a learner, I want quality lessons and quizzes appropriate for my level.", sprint: "Sprint 4", status: "In Progress", tasks: [["Test and tune lesson/quiz prompt templates for better pedagogical consistency (given qwen3 placeholder limits)", ["Prompt Engineering", "AI"]], ["Evaluate qwen3:0.6b quality vs speed tradeoff", ["Research", "AI"]], ["Improve lesson and quiz prompt templates for pedagogy", ["Prompt Engineering", "AI"]]] },
+    { id: "US-022", title: "As a learner, I want a difficulty toggle so content matches my age and skill level.", sprint: "Sprint 8", status: "Planned", tasks: [["Add difficulty selector: Easy (10-11), Moderate (12-13), Hard (14-15)", ["Frontend", "Feature"]], ["Adjust lesson/quiz prompts based on selected difficulty", ["Backend", "Prompt Engineering"]], ["Write tests for difficulty-adjusted prompt construction", ["Testing", "Unit"]]] },
+    { id: "US-025", title: "As a learner, I want fill-in-the-blank questions to accept exactly one word per blank.", sprint: "Sprint 4", status: "Done", tasks: [["Implement inline input field per blank (not single input at bottom)", ["Frontend", "Core"]], ["Validate each blank accepts exactly one word (reject spaces)", ["Backend", "Validation"]], ["Add per-blank grading with individual feedback", ["Backend", "Routes"]], ["Write tests for one-word fill-in-the-blank validation", ["Testing", "Unit"]]] },
 
     // ── Epic 3 continued: RAG & Multi-upload (Sprint 2) ──
     { id: "US-015b", title: "As a learner, I want to upload up to 5 documents at once.", sprint: "Sprint 2", status: "Done", tasks: [["Integrate LangChain RecursiveCharacterTextSplitter", ["RAG", "MVP"]], ["Update route to accept request.files.getlist() (max 5)", ["Backend", "MVP"]], ["Add multi-file session handling & collection naming", ["Backend", "MVP"]]] },
     { id: "US-016b", title: "As a learner, I want AI analysis based on retrieved chunks so outputs stay grounded.", sprint: "Sprint 2", status: "Done", tasks: [["Set up persistent ChromaDB (./data/chroma_db); ephemeral for CI", ["RAG", "MVP"]], ["Implement chunk to embed to store pipeline per file", ["AI", "MVP"]], ["Implement top-k similarity search for context builder", ["AI", "MVP"]], ["Add mocked retrieval tests for CI (CI=true)", ["Testing", "CI/CD"]]] },
 
     // ── Epic 7: User Accounts & Persistence (Sprint 5) ──
-    { id: "US-027", title: "As a learner, I want to create an account, sign in, and sign out so my progress is saved.", sprint: "Sprint 5", status: "Planned", tasks: [["Integrate Flask-Login + PostgreSQL (SQLite for demo)", ["Backend", "Auth"]], ["Build sign-up, sign-in, logout routes and templates", ["Backend", "Auth"]], ["Store hashed passwords and session persistence", ["Backend", "Security"]]] },
-    { id: "US-028", title: "As a learner, I want a dashboard to see my active lessons and progress.", sprint: "Sprint 5", status: "Planned", tasks: [["Build main dashboard with lesson list and completion status", ["Frontend", "Dashboard"]], ["Show mascot on dashboard as visual placeholder", ["Frontend", "Mascot"]], ["Track completed vs abandoned/cancelled lessons", ["Backend", "Logic"]]] },
-    { id: "US-029", title: "As a learner, I can have max 3 active lessons at a time to encourage focus.", sprint: "Sprint 5", status: "Planned", tasks: [["Enforce max 3 active lessons per user", ["Backend", "Logic"]], ["Require abandon/cancel before creating a new lesson", ["Backend", "Logic"]], ["Show warning when limit reached", ["Frontend", "UX"]]] },
-    { id: "US-030", title: "As an admin, I want to control which users can generate lessons.", sprint: "Sprint 5", status: "Planned", tasks: [["Create super admin role with per-user access toggle", ["Backend", "Auth"]], ["Deny lesson generation by default for new registrations", ["Backend", "Security"]], ["Landing page shows: 'You don't have access' for unauthorized users", ["Frontend", "UX"]]] },
-    { id: "US-031", title: "As a reviewer, I want demo accounts (Bob, Alice) with access to generate lessons.", sprint: "Sprint 5", status: "Planned", tasks: [["Seed Bob and Alice accounts with lesson generation access", ["Backend", "Demo"]], ["Allow public registration but auto-deny lesson access", ["Backend", "Auth"]], ["Test the full sign-up to lesson workflow", ["Testing", "Integration"]]] },
+    { id: "US-027", title: "As a learner, I want to create an account, sign in, and sign out so my progress is saved.", sprint: "Sprint 5", status: "Backlog", tasks: [["Integrate Flask-Login + PostgreSQL (SQLite for demo)", ["Backend", "Auth"]], ["Build sign-up, sign-in, logout routes and templates", ["Backend", "Auth"]], ["Store hashed passwords and session persistence", ["Backend", "Security"]]] },
+    { id: "US-028", title: "As a learner, I want a dashboard to see my active lessons and progress.", sprint: "Sprint 5", status: "Backlog", tasks: [["Build main dashboard with lesson list and completion status", ["Frontend", "Dashboard"]], ["Show mascot on dashboard as visual placeholder", ["Frontend", "Mascot"]], ["Track completed vs abandoned/cancelled lessons", ["Backend", "Logic"]]] },
+    { id: "US-029", title: "As a learner, I can have max 3 active lessons at a time to encourage focus.", sprint: "Sprint 5", status: "Backlog", tasks: [["Enforce max 3 active lessons per user", ["Backend", "Logic"]], ["Require abandon/cancel before creating a new lesson", ["Backend", "Logic"]], ["Show warning when limit reached", ["Frontend", "UX"]]] },
+    { id: "US-030", title: "As an admin, I want to control which users can generate lessons.", sprint: "Sprint 5", status: "Backlog", tasks: [["Create super admin role with per-user access toggle", ["Backend", "Auth"]], ["Deny lesson generation by default for new registrations", ["Backend", "Security"]], ["Landing page shows: 'You don't have access' for unauthorized users", ["Frontend", "UX"]]] },
+    { id: "US-031", title: "As a reviewer, I want demo accounts (Bob, Alice) with access to generate lessons.", sprint: "Sprint 5", status: "Backlog", tasks: [["Seed Bob and Alice accounts with lesson generation access", ["Backend", "Demo"]], ["Allow public registration but auto-deny lesson access", ["Backend", "Auth"]], ["Test the full sign-up to lesson workflow", ["Testing", "Integration"]]] },
 
     // ── Epic 8: Polish & Maintenance (Sprint 6) ──
     { id: "US-032", title: "As a learner, I want a polished dashboard with mascot feedback.", sprint: "Sprint 6", status: "Planned", tasks: [["Polish dashboard UI with mascot placeholder", ["Frontend", "Dashboard"]], ["Add mascot basic animation frames (idle/waiting/done)", ["Frontend", "Mascot"]], ["Display mascot state changes during loading operations", ["Frontend", "UX"]]] },
@@ -79,15 +79,78 @@ const CONFIG = {
     { id: "US-043", title: "As a developer, I want final bug fixes and capstone submission ready.", sprint: "Sprint 8", status: "Planned", tasks: [["Triage and fix any remaining production bugs", ["Backend", "Maintenance"]], ["Run full CI pipeline one final time", ["Testing", "CI/CD"]], ["Submit capstone project", ["Process", "Capstone"]]] }
   ],
   scopeLadder: [
+    ["Core MVP (Completed)", ["RAG pipeline & chunking", "AI summary & relevance checks", "Interactive slide deck engine", "Mixed-type quizzes & grading", "Gated progression logic", "CI/CD & 60+ automated tests"]],
+    ["Sprint 4 Focus", ["Fix fill-in-the-blank (one-word per blank)", "Loading progress via mascot", "Prompt engineering & tuning", "UX polish & bug stabilization"]],
+    ["Sprint 4 Upcoming", ["Non-blocking progress on `/process` route", "Polish responsive layout for slide deck"]],
+    ["Sprint 5-6 Planned", ["User accounts (Flask-Login + PostgreSQL)", "Learner dashboard with progress", "Max 3 active lessons gating", "Text-to-speech (opt-in)", "PDF export for completed lessons"]],
+    ["Sprint 7-8 Planned", ["OCR for scanned PDFs", "Badges & trophies for completion", "Source document referencing", "Free-tier deployment", "Demo video & capstone submission"]],
+    ["Post-Capstone / Stretch", ["Difficulty level selector (Easy/Moderate/Hard)", "Extended file type support (.docx, .html, .odt)", "YouTube/video transcript integration", "External learning resource search", "Social features (friends, chat, share lessons)", "Full offline mode (C/C++ rewrite)", "Multi-user accounts advanced", "Adaptive study planner"]]
+  ]
+};
+const SNAPSHOTS = [
+  { date: "2026-05-14", isCurrent: true, data: null },
+  { date: "2026-05-12", isCurrent: false, data: {
+  sprints: [
+    { name: "Sprint 1", status: "Done", title: "Foundation & Architecture", goal: "Flask setup, CI/CD, upload pipeline, baseline testing, static board." },
+    { name: "Sprint 2", status: "Done", title: "Core AI & RAG Pipeline", goal: "Document parsing, chunking, ChromaDB, Ollama integration, summary/relevance/study path." },
+    { name: "Sprint 3", status: "Done", title: "Interactive Learning Engine", goal: "Slide deck generator, mixed-type quizzes, checkpoints, gated progression, AJAX grading." },
+    { name: "Sprint 4", status: "In Progress", title: "UX Polish & QA Stabilization", goal: "Fix fill-in-the-blank, mascot positioning, loading feedback, prompt tuning, difficulty selector." },
+    { name: "Sprint 5", status: "Planned", title: "User Accounts & Session Persistence", goal: "Flask-Login + PostgreSQL, sign-up/sign-in, learner dashboard, max 3 lessons gating, admin access control, Bob/Alice demo accounts." },
+    { name: "Sprint 6", status: "Planned", title: "Polish, Maintenance & Enhancement", goal: "Dashboard UI polish, mascot animations, TTS (opt-in), PDF export, session cleanup, bug fixes." },
+    { name: "Sprint 7", status: "Planned", title: "Advanced Features & OCR", goal: "OCR pipeline for scanned PDFs, lesson badges/trophies, source document linking, cloud deployment prep." },
+    { name: "Sprint 8", status: "Planned", title: "Final Deployment & Demo", goal: "Free-tier deployment, final documentation, demo script + 15-min recording, capstone submission." }
+  ],
+  userStories: [
+    { id: "US-001", title: "As a developer, I want a documented project setup so I can run the app locally.", status: "Done", sprint: "Sprint 1" },
+    { id: "US-002", title: "As a developer, I want automated tests in CI so I can prove basic reliability.", status: "Done", sprint: "Sprint 1" },
+    { id: "US-003", title: "As a reviewer, I want a public task board so I can see project progress.", status: "Done", sprint: "Sprint 1" },
+    { id: "US-004", title: "As a learner, I want to enter a learning goal so the app knows what I want to study.", status: "Done", sprint: "Sprint 1" },
+    { id: "US-005", title: "As a learner, I want to upload study materials so the app can analyze them.", status: "Done", sprint: "Sprint 1" },
+    { id: "US-006", title: "As a learner, I want to see upload status so I know whether my files were accepted.", status: "Done", sprint: "Sprint 1" },
+    { id: "US-007", title: "As a learner, I want uploaded documents converted into text so the app can analyze them.", status: "Done", sprint: "Sprint 2" },
+    { id: "US-008", title: "As a developer, I want parser errors handled clearly so failed documents do not crash the app.", status: "Done", sprint: "Sprint 2" },
+    { id: "US-009", title: "As a learner, I want a summary of my materials so I can understand what they contain.", status: "Done", sprint: "Sprint 2" },
+    { id: "US-010", title: "As a learner, I want to know whether my documents match my learning goal.", status: "Done", sprint: "Sprint 2" },
+    { id: "US-011", title: "As a learner, I want a structured study path so I know what to study next.", status: "Done", sprint: "Sprint 2" },
+    { id: "US-012", title: "As a learner, I want to generate interactive lessons from my study path.", status: "Done", sprint: "Sprint 3" },
+    { id: "US-013", title: "As a learner, I want lessons presented as slides with retro fonts.", status: "Done", sprint: "Sprint 3" },
+    { id: "US-014", title: "As a learner, I want comprehension checkpoints during my lesson.", status: "Done", sprint: "Sprint 3" },
+    { id: "US-015", title: "As a learner, I want a final quiz at each module end to test understanding.", status: "Done", sprint: "Sprint 3" },
+    { id: "US-016", title: "As a learner, I want to retake failed modules with fresh questions.", status: "Done", sprint: "Sprint 3" },
+    { id: "US-017", title: "As a learner, I want modules gated so I must master one before the next.", status: "Done", sprint: "Sprint 3" },
+    { id: "US-018", title: "As a learner, I want the app to feel simple, guided, and retro-themed.", status: "Done", sprint: "Sprint 4" },
+    { id: "US-019", title: "As a learner, I want a retro mascot that provides visual feedback.", status: "Done", sprint: "Sprint 4" },
+    { id: "US-020", title: "As a learner, I want clear progress feedback during long AI operations.", status: "In Progress", sprint: "Sprint 4" },
+    { id: "US-021", title: "As a learner, I want quality lessons and quizzes appropriate for my level.", status: "In Progress", sprint: "Sprint 4" },
+    { id: "US-022", title: "As a learner, I want a difficulty toggle so content matches my age and skill level.", status: "Ready", sprint: "Sprint 4" },
+    { id: "US-025", title: "As a learner, I want fill-in-the-blank questions to accept exactly one word per blank.", status: "In Progress", sprint: "Sprint 4" },
+    { id: "US-015b", title: "As a learner, I want to upload up to 5 documents at once so I can analyze related materials together.", status: "Done", sprint: "Sprint 2" },
+    { id: "US-016b", title: "As a learner, I want AI analysis based on retrieved document chunks so outputs stay grounded and accurate.", status: "Done", sprint: "Sprint 2" },
+    { id: "US-027", title: "As a learner, I want to create an account, sign in, and sign out so my progress is saved.", status: "Planned", sprint: "Sprint 5" },
+    { id: "US-028", title: "As a learner, I want a dashboard to see my active lessons and progress.", status: "Planned", sprint: "Sprint 5" },
+    { id: "US-029", title: "As a learner, I can have max 3 active lessons at a time to encourage focus.", status: "Planned", sprint: "Sprint 5" },
+    { id: "US-030", title: "As an admin, I want to control which users can generate lessons.", status: "Planned", sprint: "Sprint 5" },
+    { id: "US-031", title: "As a reviewer, I want demo accounts (Bob, Alice) with access to generate lessons.", status: "Planned", sprint: "Sprint 5" },
+    { id: "US-032", title: "As a learner, I want a polished dashboard with mascot feedback.", status: "Planned", sprint: "Sprint 6" },
+    { id: "US-033", title: "As a learner, I want text-to-speech so I can listen to lesson content.", status: "Planned", sprint: "Sprint 6" },
+    { id: "US-034", title: "As a learner, I want to export completed lessons to PDF.", status: "Planned", sprint: "Sprint 6" },
+    { id: "US-035", title: "As a developer, I want to clean up session bloat and fix accumulated bugs.", status: "Planned", sprint: "Sprint 6" },
+    { id: "US-036", title: "As a learner, I want scanned PDFs to be understood via OCR.", status: "Planned", sprint: "Sprint 7" },
+    { id: "US-037", title: "As a learner, I want badges and trophies for completed lessons.", status: "Planned", sprint: "Sprint 7" },
+    { id: "US-038", title: "As a learner, I want lessons to reference their source documents.", status: "Planned", sprint: "Sprint 7" },
+    { id: "US-040", title: "As a developer, I want to deploy the app to a free-tier host.", status: "Planned", sprint: "Sprint 8" },
+    { id: "US-041", title: "As a reviewer, I want complete project documentation.", status: "Planned", sprint: "Sprint 8" },
+    { id: "US-042", title: "As a reviewer, I want a 15-minute demo video showing the full workflow.", status: "Planned", sprint: "Sprint 8" },
+    { id: "US-043", title: "As a developer, I want final bug fixes and capstone submission ready.", status: "Planned", sprint: "Sprint 8" }
+  ],
+  scopeLadder: [
     ["Core MVP (Completed)", ["RAG pipeline & chunking", "AI summary & relevance checks", "Interactive slide deck engine", "Mixed-type quizzes & grading", "Gated progression logic", "CI/CD & 45+ automated tests"]],
     ["Sprint 4 Focus", ["Fix fill-in-the-blank (one-word per blank)", "Loading progress via mascot", "Difficulty selector (Easy/Mod/Hard)", "Prompt engineering & tuning", "UX polish & bug stabilization"]],
     ["Sprint 5-6 Planned", ["User accounts (Flask-Login + PostgreSQL)", "Learner dashboard with progress", "Max 3 active lessons gating", "Text-to-speech (opt-in)", "PDF export for completed lessons"]],
     ["Sprint 7-8 Planned", ["OCR for scanned PDFs", "Badges & trophies for completion", "Source document referencing", "Free-tier deployment", "Demo video & capstone submission"]],
     ["Post-Capstone / Stretch", ["Social features (friends, chat, share)", "YouTube transcript integration", "Full offline mode (C/C++ rewrite)", "Multi-user accounts advanced", "Adaptive study planner"]]
   ]
-};
-const SNAPSHOTS = [
-  { date: "2026-05-12", isCurrent: true, data: null },
+  }},
   { date: "2026-05-10", isCurrent: false, data: {
   sprints: [
     { name: "Sprint 0", status: "Done", title: "Initialization & Requirements", goal: "Establish repository, finalize SRS/TODO, configure CI baseline, deploy static task board." },
