@@ -41,7 +41,7 @@ function renderBoard(filterSprint = "All") {
   const root = document.getElementById("kanbanBoard");
   const stories = CONFIG.userStories.filter(s => filterSprint === "All" || s.sprint === filterSprint);
   
-  const columns = { "Backlog": [], "Ready": [], "In Progress": [], "Done": [], "Planned": [] };
+  const columns = { "Backlog": [], "Ready": [], "In Progress": [], "Done": [] };
   stories.forEach(story => { if (columns[story.status]) columns[story.status].push(story); });
 
   root.innerHTML = Object.entries(columns).map(([column, sList]) => `
@@ -151,7 +151,7 @@ function switchToSnapshot(snapshot) {
     </div>
   `).join("");
 
-  const columns = { "Backlog": [], "Ready": [], "In Progress": [], "Done": [], "Planned": [] };
+  const columns = { "Backlog": [], "Ready": [], "In Progress": [], "Done": [] };
   data.userStories.forEach(story => {
     if (columns[story.status]) columns[story.status].push(story);
   });
