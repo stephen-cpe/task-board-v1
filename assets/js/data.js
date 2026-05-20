@@ -3,14 +3,14 @@
  * Contains all task board data - sprints, user stories, and historical snapshots
  */
 const CONFIG = {
-  lastUpdated: "May 18, 2026",
+  lastUpdated: "May 20, 2026",
   sprints: [
     { id: "Sprint 1", title: "Foundation & Architecture", goal: "Flask setup, CI/CD, upload pipeline, baseline testing, static board.", status: "Done" },
     { id: "Sprint 2", title: "Core AI & RAG Pipeline", goal: "Document parsing, chunking, ChromaDB, Ollama integration, summary/relevance/study path.", status: "Done" },
     { id: "Sprint 3", title: "Interactive Learning Engine", goal: "Slide deck generator, mixed-type quizzes, checkpoints, gated progression, AJAX grading.", status: "Done" },
     { id: "Sprint 4", title: "UX Polish, Mascot, and Quality Improvements", goal: "Polish the retro experience, integrate mascot into UI, improve loading UX, fix bugs, and tune prompts for better lesson output.", status: "Done" },
     { id: "Sprint 5", title: "User Accounts & Session Persistence", goal: "PostgreSQL-only migration, codebase refactoring, Flask-Login auth, sign-up/sign-in/logout, learner dashboard with progress bars, DB-backed lesson repository, max 3 lessons gating, admin access control, demo accounts.", status: "Done" },
-    { id: "Sprint 6", title: "Polish, Maintenance, and Enhancement", goal: "UI and UX refinement, defect remediation, performance optimization, expanded test coverage, TTS, PDF export, mascot animations, and session cleanup.", status: "In Progress" },
+    { id: "Sprint 6", title: "Polish, Maintenance, and Enhancement", goal: "UI and UX refinement, admin panel with user management, password reset (self + admin), custom error handlers, multi-path lesson support, defect remediation, performance optimization, expanded test coverage, TTS, PDF export, mascot animations, and session cleanup.", status: "In Progress" },
     { id: "Sprint 7", title: "Advanced Features, Cloud Preparation, and Refinement", goal: "OCR integration, achievement badges, source document referencing, HuggingFace model evaluation for cloud deployment readiness, and general application refinement.", status: "Planned" },
     { id: "Sprint 8", title: "Final Deployment & Demo", goal: "Free-tier deployment, final documentation, demo script + 15-min recording, capstone submission.", status: "Planned" }
   ],
@@ -57,11 +57,14 @@ const CONFIG = {
     { id: "US-031", title: "As a reviewer, I want demo accounts (Bob, Alice) with access to generate lessons.", sprint: "Sprint 5", status: "Done", tasks: [["Add /seed-demo route creating bob/alice with can_generate_lessons=True", ["Backend", "Demo"]], ["Allow public registration but auto-deny lesson access", ["Backend", "Auth"]], ["Write integration tests for admin access and seed-demo", ["Testing", "Integration"]]] },
 
     // ── Epic 8: Polish, Maintenance, and Enhancement (Sprint 6) ──
-    { id: "US-032", title: "As a learner, I want a polished dashboard with mascot feedback.", sprint: "Sprint 6", status: "Backlog", tasks: [["Polish dashboard UI with mascot placeholder", ["Frontend", "Dashboard"]], ["Add mascot basic animation frames (idle/waiting/done)", ["Frontend", "Mascot"]], ["Display mascot state changes during loading operations", ["Frontend", "UX"]]] },
+    { id: "US-032", title: "As a learner, I want a polished dashboard with mascot feedback.", sprint: "Sprint 6", status: "In Progress", tasks: [["Polish dashboard UI with mascot placeholder", ["Frontend", "Dashboard"]], ["Add mascot basic animation frames (idle/waiting/done)", ["Frontend", "Mascot"]], ["Display mascot state changes during loading operations", ["Frontend", "UX"]]] },
     { id: "US-033", title: "As a learner, I want text-to-speech so I can listen to lesson content.", sprint: "Sprint 6", status: "Backlog", tasks: [["Integrate Web Speech API or TTS library", ["Frontend", "Feature"]], ["TTS disabled by default, can be enabled in settings", ["Frontend", "UX"]], ["Add TTS toggle button on slide deck", ["Frontend", "Feature"]]] },
     { id: "US-034", title: "As a learner, I want to export completed lessons to PDF.", sprint: "Sprint 6", status: "Backlog", tasks: [["Generate PDF from lesson slides and quiz results", ["Backend", "Feature"]], ["Add export button on completed lesson page", ["Frontend", "UX"]], ["Test PDF output for correctness", ["Testing", "Unit"]]] },
-    { id: "US-035", title: "As a developer, I want to clean up session bloat and fix accumulated bugs.", sprint: "Sprint 6", status: "Backlog", tasks: [["Remove extracted_texts from session after lessons generated", ["Backend", "Performance"]], ["Fix bugs discovered during Sprint 5 testing", ["Backend", "Maintenance"]], ["Expand test coverage; ensure all existing tests pass", ["Testing", "CI/CD"]]] },
-    { id: "US-036", title: "As a developer, I want to refine the UI/UX and optimize performance.", sprint: "Sprint 6", status: "Backlog", tasks: [["Perform comprehensive UI and UX refinement across all views", ["Frontend", "Polish"]], ["Conduct code-level performance optimization", ["Backend", "Optimization"]], ["Address and resolve known defects across the application", ["Backend", "Maintenance"]]] },
+    { id: "US-035", title: "As a developer, I want to clean up session bloat and fix accumulated bugs.", sprint: "Sprint 6", status: "Done", tasks: [["Remove extracted_texts from session after lessons generated", ["Backend", "Performance"]], ["Fix bugs discovered during Sprint 5 testing", ["Backend", "Maintenance"]], ["Expand test coverage to 143+ passing tests", ["Testing", "CI/CD"]]] },
+    { id: "US-036", title: "As a developer, I want to refine the UI/UX and optimize performance.", sprint: "Sprint 6", status: "Done", tasks: [["Perform comprehensive UI and UX refinement across all views", ["Frontend", "Polish"]], ["Conduct code-level performance optimization", ["Backend", "Optimization"]], ["Address and resolve known defects across the application", ["Backend", "Maintenance"]]] },
+    { id: "US-046", title: "As an admin, I want an admin panel to manage users and reset passwords.", sprint: "Sprint 6", status: "Done", tasks: [["Build /admin route with user management list view", ["Frontend", "Admin"]], ["Add admin-initiated password reset at /admin/reset-password/<id>", ["Backend", "Auth"]], ["Add self-service password reset at /reset-password", ["Backend", "Auth"]]] },
+    { id: "US-047", title: "As a developer, I want custom error handlers for a polished user experience.", sprint: "Sprint 6", status: "Done", tasks: [["Add custom error templates for 400, 403, 404, 500", ["Frontend", "Error"]], ["Add db.session.rollback on 500 to prevent locked transactions", ["Backend", "Stability"]]] },
+    { id: "US-048", title: "As a learner, I want my study data to persist across browser sessions.", sprint: "Sprint 6", status: "Done", tasks: [["Add DB-first data retrieval fallback when session is empty", ["Backend", "Persist"]], ["Add multi-path lesson support via path_id parameter", ["Backend", "Routes"]], ["Integrate lesson generation and login with DB-backed recovery", ["Backend", "Auth"]]] },
 
     // ── Epic 9: OCR, Advanced Features, and Cloud Preparation (Sprint 7) ──
     { id: "US-037", title: "As a learner, I want scanned PDFs to be understood via OCR.", sprint: "Sprint 7", status: "Backlog", tasks: [["Integrate OCR engine (Tesseract or HuggingFace vision-language models)", ["Backend", "OCR"]], ["Detect images in uploaded documents and run OCR analysis", ["Backend", "OCR"]], ["Feed OCR output into chunking pipeline after extraction", ["Backend", "RAG"]], ["Write tests for OCR integration", ["Testing", "Integration"]]] },
@@ -77,7 +80,7 @@ const CONFIG = {
     { id: "US-045", title: "As a developer, I want final bug fixes and capstone submission ready.", sprint: "Sprint 8", status: "Backlog", tasks: [["Triage and fix any remaining production bugs", ["Backend", "Maintenance"]], ["Run full CI pipeline one final time", ["Testing", "CI/CD"]], ["Submit capstone project", ["Process", "Capstone"]]] }
   ],
   scopeLadder: [
-    ["Implemented (Sprints 1–5)", ["RAG pipeline and chunking", "AI summary and relevance checks", "Interactive slide deck engine", "Mixed-type quizzes and grading", "Gated progression logic", "CI/CD and automated tests", "Retro colors, fonts, and cyberpunk theme", "Static mascot with progress-aware speech bubble", "Non-blocking AJAX process route with stage tracking", "One-word fill-in-the-blank with per-blank grading", "PostgreSQL-only migration", "Codebase refactoring: orchestrator, grader, repo seams", "AI_BACKEND env var indirection", "Flask-Login auth: sign-up, login, logout", "Learner dashboard with progress bars", "Max 3 active lessons gating", "Admin access control with per-user toggle", "Bob and Alice demo account seeding"]],
+    ["Implemented (Sprints 1–6)", ["RAG pipeline and chunking", "AI summary and relevance checks", "Interactive slide deck engine", "Mixed-type quizzes and grading", "Gated progression logic", "CI/CD and automated tests (143+ tests)", "Retro colors, fonts, and cyberpunk theme", "Static mascot with progress-aware speech bubble", "Non-blocking AJAX process route with stage tracking", "One-word fill-in-the-blank with per-blank grading", "PostgreSQL-only migration", "Codebase refactoring: orchestrator, grader, repo seams", "AI_BACKEND env var indirection", "Flask-Login auth: sign-up, login, logout", "Learner dashboard with progress bars", "Max 3 active lessons gating", "Admin access control with per-user toggle", "Bob and Alice demo account seeding", "Admin panel with user management", "Password reset (self-service and admin-initiated)", "Custom error handlers (400, 403, 404, 500)", "Multi-path lesson support", "DB-first data retrieval for cross-session persistence"]],
     ["Sprint 6 — In Progress", ["UI and UX refinement across all views", "Defect remediation and performance optimization", "Expanded automated test coverage", "Text-to-speech narration (opt-in)", "PDF export for completed lessons", "Mascot animation frames (idle/waiting/done)", "Session cleanup (extracted_texts removal)"]],
     ["Sprint 7 — Planned", ["OCR for scanned PDFs (Tesseract or HuggingFace)", "Badges and trophies for completed lessons", "Source document referencing in lessons", "HuggingFace embedding model evaluation", "HuggingFace vision-language model evaluation", "Cloud ChromaDB and cloud AI provider testing", "General refinement and test expansion"]],
     ["Sprint 8 — Planned", ["Free-tier deployment (Render or Railway)", "Final documentation review", "Demo script and 15-minute recording", "Capstone submission"]],
@@ -85,7 +88,69 @@ const CONFIG = {
   ]
 };
 const SNAPSHOTS = [
-  { date: "2026-05-18", isCurrent: true, data: null },
+  { date: "2026-05-20", isCurrent: true, data: null },
+  { date: "2026-05-18", isCurrent: false, data: {
+  sprints: [
+    { name: "Sprint 1", status: "Done", title: "Foundation & Architecture", goal: "Flask setup, CI/CD, upload pipeline, baseline testing, static board." },
+    { name: "Sprint 2", status: "Done", title: "Core AI & RAG Pipeline", goal: "Document parsing, chunking, ChromaDB, Ollama integration, summary/relevance/study path." },
+    { name: "Sprint 3", status: "Done", title: "Interactive Learning Engine", goal: "Slide deck generator, mixed-type quizzes, checkpoints, gated progression, AJAX grading." },
+    { name: "Sprint 4", status: "Done", title: "UX Polish, Mascot, and Quality Improvements", goal: "Polish the retro experience, integrate mascot into UI, improve loading UX, fix bugs, and tune prompts for better lesson output." },
+    { name: "Sprint 5", status: "Done", title: "User Accounts & Session Persistence", goal: "PostgreSQL-only migration, codebase refactoring, Flask-Login auth, sign-up/sign-in/logout, learner dashboard with progress bars, DB-backed lesson repository, max 3 lessons gating, admin access control, demo accounts." },
+    { name: "Sprint 6", status: "In Progress", title: "Polish, Maintenance, and Enhancement", goal: "UI and UX refinement, defect remediation, performance optimization, expanded test coverage, TTS, PDF export, mascot animations, and session cleanup." },
+    { name: "Sprint 7", status: "Planned", title: "Advanced Features, Cloud Preparation, and Refinement", goal: "OCR integration, achievement badges, source document referencing, HuggingFace model evaluation for cloud deployment readiness, and general application refinement." },
+    { name: "Sprint 8", status: "Planned", title: "Final Deployment & Demo", goal: "Free-tier deployment, final documentation, demo script + 15-min recording, capstone submission." }
+  ],
+  userStories: [
+    { id: "US-001", title: "As a developer, I want a documented project setup so I can run the app locally.", status: "Done", sprint: "Sprint 1" },
+    { id: "US-002", title: "As a developer, I want automated tests in CI so I can prove basic reliability.", status: "Done", sprint: "Sprint 1" },
+    { id: "US-003", title: "As a reviewer, I want a public task board so I can see project progress.", status: "Done", sprint: "Sprint 1" },
+    { id: "US-004", title: "As a learner, I want to enter a learning goal so the app knows what I want to study.", status: "Done", sprint: "Sprint 1" },
+    { id: "US-005", title: "As a learner, I want to upload study materials so the app can analyze them.", status: "Done", sprint: "Sprint 1" },
+    { id: "US-006", title: "As a learner, I want to see upload status so I know whether my files were accepted.", status: "Done", sprint: "Sprint 1" },
+    { id: "US-007", title: "As a learner, I want uploaded documents converted into text so the app can analyze them.", status: "Done", sprint: "Sprint 2" },
+    { id: "US-008", title: "As a developer, I want parser errors handled clearly so failed documents do not crash the app.", status: "Done", sprint: "Sprint 2" },
+    { id: "US-009", title: "As a learner, I want a summary of my materials so I can understand what they contain.", status: "Done", sprint: "Sprint 2" },
+    { id: "US-010", title: "As a learner, I want to know whether my documents match my learning goal.", status: "Done", sprint: "Sprint 2" },
+    { id: "US-011", title: "As a learner, I want a structured study path so I know what to study next.", status: "Done", sprint: "Sprint 2" },
+    { id: "US-012", title: "As a learner, I want to generate interactive lessons from my study path.", status: "Done", sprint: "Sprint 3" },
+    { id: "US-013", title: "As a learner, I want lessons presented as slides with retro fonts.", status: "Done", sprint: "Sprint 3" },
+    { id: "US-014", title: "As a learner, I want comprehension checkpoints during my lesson.", status: "Done", sprint: "Sprint 3" },
+    { id: "US-015", title: "As a learner, I want a final quiz at each module end to test understanding.", status: "Done", sprint: "Sprint 3" },
+    { id: "US-016", title: "As a learner, I want to retake failed modules with fresh questions.", status: "Done", sprint: "Sprint 3" },
+    { id: "US-017", title: "As a learner, I want modules gated so I must master one before the next.", status: "Done", sprint: "Sprint 3" },
+    { id: "US-018", title: "As a learner, I want the app to feel simple, guided, and retro-themed.", status: "Done", sprint: "Sprint 4" },
+    { id: "US-019", title: "As a learner, I want a retro mascot that provides visual feedback.", status: "Done", sprint: "Sprint 4" },
+    { id: "US-020", title: "As a learner, I want clear progress feedback during long AI operations.", status: "Done", sprint: "Sprint 4" },
+    { id: "US-021", title: "As a learner, I want quality lessons and quizzes appropriate for my level.", status: "Done", sprint: "Sprint 4" },
+    { id: "US-022", title: "As a learner, I want a difficulty toggle so content matches my age and skill level. (Deferred to post-capstone)", status: "Backlog", sprint: "Post-Capstone" },
+    { id: "US-027", title: "As a learner, I want to create an account, sign in, and sign out so my progress is saved.", status: "Done", sprint: "Sprint 5" },
+    { id: "US-028", title: "As a learner, I want a dashboard to see my active lessons and progress.", status: "Done", sprint: "Sprint 5" },
+    { id: "US-029", title: "As a learner, I can have max 3 active lessons at a time to encourage focus.", status: "Done", sprint: "Sprint 5" },
+    { id: "US-030", title: "As an admin, I want to control which users can generate lessons.", status: "Done", sprint: "Sprint 5" },
+    { id: "US-031", title: "As a reviewer, I want demo accounts (Bob, Alice) with access to generate lessons.", status: "Done", sprint: "Sprint 5" },
+    { id: "US-032", title: "As a learner, I want a polished dashboard with mascot feedback.", status: "Backlog", sprint: "Sprint 6" },
+    { id: "US-033", title: "As a learner, I want text-to-speech so I can listen to lesson content.", status: "Backlog", sprint: "Sprint 6" },
+    { id: "US-034", title: "As a learner, I want to export completed lessons to PDF.", status: "Backlog", sprint: "Sprint 6" },
+    { id: "US-035", title: "As a developer, I want to clean up session bloat and fix accumulated bugs.", status: "Backlog", sprint: "Sprint 6" },
+    { id: "US-036", title: "As a developer, I want to refine the UI/UX and optimize performance.", status: "Backlog", sprint: "Sprint 6" },
+    { id: "US-037", title: "As a learner, I want scanned PDFs to be understood via OCR.", status: "Backlog", sprint: "Sprint 7" },
+    { id: "US-038", title: "As a learner, I want badges and trophies for completed lessons.", status: "Backlog", sprint: "Sprint 7" },
+    { id: "US-039", title: "As a learner, I want lessons to reference their source documents.", status: "Backlog", sprint: "Sprint 7" },
+    { id: "US-040", title: "As a developer, I want to evaluate HuggingFace models for cloud deployment readiness.", status: "Backlog", sprint: "Sprint 7" },
+    { id: "US-041", title: "As a developer, I want to conduct general application refinement.", status: "Backlog", sprint: "Sprint 7" },
+    { id: "US-042", title: "As a developer, I want to deploy the app to a free-tier host.", status: "Backlog", sprint: "Sprint 8" },
+    { id: "US-043", title: "As a reviewer, I want complete project documentation.", status: "Backlog", sprint: "Sprint 8" },
+    { id: "US-044", title: "As a reviewer, I want a 15-minute demo video showing the full workflow.", status: "Backlog", sprint: "Sprint 8" },
+    { id: "US-045", title: "As a developer, I want final bug fixes and capstone submission ready.", status: "Backlog", sprint: "Sprint 8" }
+  ],
+  scopeLadder: [
+    ["Implemented (Sprints 1–5)", ["RAG pipeline and chunking", "AI summary and relevance checks", "Interactive slide deck engine", "Mixed-type quizzes and grading", "Gated progression logic", "CI/CD and automated tests", "Retro colors, fonts, and cyberpunk theme", "Static mascot with progress-aware speech bubble", "Non-blocking AJAX process route with stage tracking", "One-word fill-in-the-blank with per-blank grading", "PostgreSQL-only migration", "Codebase refactoring: orchestrator, grader, repo seams", "AI_BACKEND env var indirection", "Flask-Login auth: sign-up, login, logout", "Learner dashboard with progress bars", "Max 3 active lessons gating", "Admin access control with per-user toggle", "Bob and Alice demo account seeding"]],
+    ["Sprint 6 — In Progress", ["UI and UX refinement across all views", "Defect remediation and performance optimization", "Expanded automated test coverage", "Text-to-speech narration (opt-in)", "PDF export for completed lessons", "Mascot animation frames (idle/waiting/done)", "Session cleanup (extracted_texts removal)"]],
+    ["Sprint 7 — Planned", ["OCR for scanned PDFs (Tesseract or HuggingFace)", "Badges and trophies for completed lessons", "Source document referencing in lessons", "HuggingFace embedding model evaluation", "HuggingFace vision-language model evaluation", "Cloud ChromaDB and cloud AI provider testing", "General refinement and test expansion"]],
+    ["Sprint 8 — Planned", ["Free-tier deployment (Render or Railway)", "Final documentation review", "Demo script and 15-minute recording", "Capstone submission"]],
+    ["Post-Capstone / Stretch", ["Difficulty level selector (Easy/Moderate/Hard)", "Extended file type support (.docx, .html, .odt)", "YouTube and video transcript integration", "Short-answer AI grading", "Spaced repetition scheduling", "Adaptive study planner", "Social features and full offline mode"]]
+  ]
+  }},
   { date: "2026-05-16", isCurrent: false, data: {
   sprints: [
     { name: "Sprint 1", status: "Done", title: "Foundation & Architecture", goal: "Flask setup, CI/CD, upload pipeline, baseline testing, static board." },
