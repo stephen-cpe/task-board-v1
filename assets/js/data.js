@@ -96,7 +96,7 @@ const SNAPSHOTS = [
     { name: "Sprint 3", status: "Done", title: "Interactive Learning Engine", goal: "Slide deck generator, mixed-type quizzes, checkpoints, gated progression, AJAX grading." },
     { name: "Sprint 4", status: "Done", title: "UX Polish, Mascot, and Quality Improvements", goal: "Polish the retro experience, integrate mascot into UI, improve loading UX, fix bugs, and tune prompts for better lesson output." },
     { name: "Sprint 5", status: "Done", title: "User Accounts & Session Persistence", goal: "PostgreSQL-only migration, codebase refactoring, Flask-Login auth, sign-up/sign-in/logout, learner dashboard with progress bars, DB-backed lesson repository, max 3 lessons gating, admin access control, demo accounts." },
-    { name: "Sprint 6", status: "In Progress", title: "Polish, Maintenance, and Enhancement", goal: "UI and UX refinement, defect remediation, performance optimization, expanded test coverage, TTS, PDF export, mascot animations, and session cleanup." },
+    { name: "Sprint 6", status: "In Progress", title: "Polish, Maintenance, and Enhancement", goal: "UI and UX refinement, admin panel with user management, password reset, custom error handlers, multi-path lesson support, defect remediation, performance optimization, expanded test coverage, TTS, PDF export, mascot animations, and session cleanup." },
     { name: "Sprint 7", status: "Planned", title: "Advanced Features, Cloud Preparation, and Refinement", goal: "OCR integration, achievement badges, source document referencing, HuggingFace model evaluation for cloud deployment readiness, and general application refinement." },
     { name: "Sprint 8", status: "Planned", title: "Final Deployment & Demo", goal: "Free-tier deployment, final documentation, demo script + 15-min recording, capstone submission." }
   ],
@@ -128,11 +128,11 @@ const SNAPSHOTS = [
     { id: "US-029", title: "As a learner, I can have max 3 active lessons at a time to encourage focus.", status: "Done", sprint: "Sprint 5" },
     { id: "US-030", title: "As an admin, I want to control which users can generate lessons.", status: "Done", sprint: "Sprint 5" },
     { id: "US-031", title: "As a reviewer, I want demo accounts (Bob, Alice) with access to generate lessons.", status: "Done", sprint: "Sprint 5" },
-    { id: "US-032", title: "As a learner, I want a polished dashboard with mascot feedback.", status: "Backlog", sprint: "Sprint 6" },
+    { id: "US-032", title: "As a learner, I want a polished dashboard with mascot feedback.", status: "Ready", sprint: "Sprint 6" },
     { id: "US-033", title: "As a learner, I want text-to-speech so I can listen to lesson content.", status: "Backlog", sprint: "Sprint 6" },
     { id: "US-034", title: "As a learner, I want to export completed lessons to PDF.", status: "Backlog", sprint: "Sprint 6" },
-    { id: "US-035", title: "As a developer, I want to clean up session bloat and fix accumulated bugs.", status: "Backlog", sprint: "Sprint 6" },
-    { id: "US-036", title: "As a developer, I want to refine the UI/UX and optimize performance.", status: "Backlog", sprint: "Sprint 6" },
+    { id: "US-035", title: "As a developer, I want to clean up session bloat and fix accumulated bugs.", status: "In Progress", sprint: "Sprint 6" },
+    { id: "US-036", title: "As a developer, I want to refine the UI/UX and optimize performance.", status: "In Progress", sprint: "Sprint 6" },
     { id: "US-037", title: "As a learner, I want scanned PDFs to be understood via OCR.", status: "Backlog", sprint: "Sprint 7" },
     { id: "US-038", title: "As a learner, I want badges and trophies for completed lessons.", status: "Backlog", sprint: "Sprint 7" },
     { id: "US-039", title: "As a learner, I want lessons to reference their source documents.", status: "Backlog", sprint: "Sprint 7" },
@@ -145,7 +145,8 @@ const SNAPSHOTS = [
   ],
   scopeLadder: [
     ["Implemented (Sprints 1–5)", ["RAG pipeline and chunking", "AI summary and relevance checks", "Interactive slide deck engine", "Mixed-type quizzes and grading", "Gated progression logic", "CI/CD and automated tests", "Retro colors, fonts, and cyberpunk theme", "Static mascot with progress-aware speech bubble", "Non-blocking AJAX process route with stage tracking", "One-word fill-in-the-blank with per-blank grading", "PostgreSQL-only migration", "Codebase refactoring: orchestrator, grader, repo seams", "AI_BACKEND env var indirection", "Flask-Login auth: sign-up, login, logout", "Learner dashboard with progress bars", "Max 3 active lessons gating", "Admin access control with per-user toggle", "Bob and Alice demo account seeding"]],
-    ["Sprint 6 — In Progress", ["UI and UX refinement across all views", "Defect remediation and performance optimization", "Expanded automated test coverage", "Text-to-speech narration (opt-in)", "PDF export for completed lessons", "Mascot animation frames (idle/waiting/done)", "Session cleanup (extracted_texts removal)"]],
+    ["Sprint 6 — In Progress", ["UI and UX refinement across all views", "Defect remediation and performance optimization", "Expanded automated test coverage", "Admin panel with user management", "Password reset (self-service and admin-initiated)", "Custom error handlers (400, 403, 404, 500)", "Multi-path lesson support", "DB-first data retrieval for cross-session persistence", "Session cleanup and bug fixes"]],
+    ["Sprint 6 — Remaining", ["Text-to-speech narration (opt-in)", "PDF export for completed lessons", "Mascot animation frames (idle/waiting/done)"]],
     ["Sprint 7 — Planned", ["OCR for scanned PDFs (Tesseract or HuggingFace)", "Badges and trophies for completed lessons", "Source document referencing in lessons", "HuggingFace embedding model evaluation", "HuggingFace vision-language model evaluation", "Cloud ChromaDB and cloud AI provider testing", "General refinement and test expansion"]],
     ["Sprint 8 — Planned", ["Free-tier deployment (Render or Railway)", "Final documentation review", "Demo script and 15-minute recording", "Capstone submission"]],
     ["Post-Capstone / Stretch", ["Difficulty level selector (Easy/Moderate/Hard)", "Extended file type support (.docx, .html, .odt)", "YouTube and video transcript integration", "Short-answer AI grading", "Spaced repetition scheduling", "Adaptive study planner", "Social features and full offline mode"]]
