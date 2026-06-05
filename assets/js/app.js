@@ -144,7 +144,7 @@ function switchToSnapshot(snapshot) {
   rootSprints.innerHTML = data.sprints.map(sprint => `
     <div class="col-md-6 col-xl-3">
       <article class="sprint-card ${getStatusClass(sprint.status)}">
-        <div class="sprint-kicker">${sprint.name} // ${sprint.status}</div>
+        <div class="sprint-kicker">${sprint.id || sprint.name} // ${sprint.status}</div>
         <h3 class="h5 sprint-title mt-2">${sprint.title}</h3>
         <p class="sprint-goal mb-0">${sprint.goal}</p>
       </article>
