@@ -89,21 +89,6 @@ function renderStory(story) {
 }
 
 
-function renderScopeLadder(scopeLadderData) {
-  const root = document.getElementById("scopeLadder");
-  const data = scopeLadderData || CONFIG.scopeLadder;
-  root.innerHTML = data.map(([level, items]) => `
-    <div class="col-md-6 col-xl-3">
-      <article class="scope-card">
-        <div class="scope-level">${level}</div>
-        <ul class="mt-2 ps-3">
-          ${items.map(item => `<li>${item}</li>`).join("")}
-        </ul>
-      </article>
-    </div>
-  `).join("");
-}
-
 function renderSprintFilter() {
   const sel = document.getElementById("sprintFilter");
   if (!sel) return;
@@ -115,7 +100,6 @@ function renderSprintFilter() {
 document.getElementById("lastUpdated").textContent = CONFIG.lastUpdated;
 renderSprints();
 renderBoard();
-renderScopeLadder();
 renderSprintFilter();
 
 // Sprint filter change handler
@@ -129,7 +113,6 @@ function switchToSnapshot(snapshot) {
     if (sprintFilter) sprintFilter.disabled = false;
     renderSprints();
     renderBoard();
-    renderScopeLadder();
     return;
   }
 
@@ -168,10 +151,6 @@ function switchToSnapshot(snapshot) {
       </section>
     </div>
   `).join("");
-
-  if (data.scopeLadder) {
-    renderScopeLadder(data.scopeLadder);
-  }
 }
 
 // Initialize dropdown

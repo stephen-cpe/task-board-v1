@@ -350,7 +350,7 @@ body {
 .sprint-card.planning { border-left: 4px solid var(--az-muted); }
 .sprint-card.backlog { border-left: 4px solid var(--az-border); }
 
-/* Scope Ladder */
+/* Scope Ladder (used by backlog.html) */
 .scope-card {
   padding: 1rem;
   height: 100%;
@@ -370,4 +370,143 @@ body {
   color: var(--az-muted);
   padding-left: 1.2rem;
 }
+
+/* ===== USER STORIES PAGE ===== */
+.sprint-row {
+  border-bottom: 1px solid rgba(0, 180, 216, 0.12);
+  padding-bottom: 2rem;
+}
+.sprint-row:last-child { border-bottom: none; }
+
+.sprint-row-header {
+  padding-left: 0.5rem;
+  border-left: 3px solid var(--az-cyan);
+}
+.sprint-row-badge {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 900;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  border-radius: 6px;
+  background: rgba(0, 180, 216, 0.15);
+  border: 1px solid var(--az-border);
+  color: var(--az-cyan-light);
+}
+.sprint-row-badge.done { border-left: 3px solid var(--az-success); }
+.sprint-row-badge.in-progress { border-left: 3px solid var(--az-warning); }
+.sprint-row-badge.backlog { border-left: 3px solid var(--az-border); }
+
+.sprint-row-status {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.sprint-row-status.done { color: var(--az-success); border-color: var(--az-success); }
+.sprint-row-status.in-progress { color: var(--az-warning); border-color: var(--az-warning); }
+.sprint-row-status.backlog { color: var(--az-muted); }
+
+.sprint-row-goal {
+  color: var(--az-muted);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* User story cards (grid) */
+.us-card {
+  background: linear-gradient(135deg, rgba(30, 58, 95, 0.72), rgba(16, 39, 66, 0.6));
+  border: 1px solid var(--az-border);
+  border-radius: 14px;
+  padding: 1.1rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-top: 3px solid var(--az-cyan);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.us-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 16px var(--az-glow);
+}
+.us-card.done { border-top-color: var(--az-success); }
+.us-card.in-progress { border-top-color: var(--az-warning); }
+.us-card.backlog { border-top-color: var(--az-border); opacity: 0.88; }
+
+.us-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.7rem;
+}
+
+.us-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--az-border);
+}
+.us-status-badge.done { color: var(--az-success); border-color: var(--az-success); background: rgba(126, 231, 135, 0.08); }
+.us-status-badge.in-progress { color: var(--az-warning); border-color: var(--az-warning); background: rgba(255, 209, 102, 0.08); }
+.us-status-badge.backlog { color: var(--az-muted); border-color: var(--az-border); }
+
+.status-icon { font-size: 0.85rem; }
+
+.us-card-title {
+  color: var(--az-silver);
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0 0 0.8rem 0;
+}
+
+.us-card-tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: auto;
+}
+
+.us-card-tasks .task-card {
+  padding: 0.45rem;
+  margin-bottom: 0;
+}
+.us-card-tasks .task-desc {
+  font-size: 0.85rem;
+}
+
+/* Status dots (legend) */
+.status-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 0.3rem;
+}
+.status-dot.status-done { background: var(--az-success); box-shadow: 0 0 6px var(--az-success); }
+.status-dot.status-in-progress { background: var(--az-warning); box-shadow: 0 0 6px var(--az-warning); }
+.status-dot.status-backlog { background: var(--az-muted); }
+
+/* Backlog page link */
+.backlog-link {
+  color: var(--az-cyan-light);
+  text-decoration: underline;
+  text-decoration-color: var(--az-cyan);
+}
+.backlog-link:hover { color: #fff; text-shadow: 0 0 8px var(--az-cyan); }
+
+/* Backlog page cards */
+.backlog-card {
+  border-left: 3px solid var(--az-cyan);
+}
+.backlog-card:first-child { border-left-color: var(--az-warning); }
+.backlog-card:last-child { border-left-color: var(--az-border); }
 
