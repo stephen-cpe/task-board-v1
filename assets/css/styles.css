@@ -34,12 +34,18 @@ html { scroll-behavior: smooth; }
 
 body {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   background:
     radial-gradient(circle at top left, rgba(0, 180, 216, 0.14), transparent 30rem),
     radial-gradient(circle at bottom right, rgba(144, 224, 239, 0.08), transparent 35rem),
     linear-gradient(180deg, var(--az-dark), var(--az-darker));
   color: var(--az-silver);
   font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+main {
+  flex: 1;
 }
 
 .scanlines {
