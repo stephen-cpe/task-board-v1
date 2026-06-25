@@ -801,7 +801,7 @@ const SNAPSHOTS = [
     { id: "US-014", title: "As a reviewer, I want the demo to show the full workflow.", status: "Backlog", sprint: "Sprint 4" }
   ]
   }},
-  { date: "2025-05-06", isCurrent: false, data: {
+  { date: "2026-05-06", isCurrent: false, data: {
   sprints: [
     { name: "Sprint 0", status: "Done", title: "Initialization & Requirements", goal: "Establish repository, finalize SRS/TODO, configure CI baseline, deploy static task board." },
     { name: "Sprint 1", status: "In Progress", title: "Upload & Validation Pipeline", goal: "Implement Flask routing, goal input, file upload validation, storage handling, and baseline pytest suite." },
@@ -825,7 +825,7 @@ const SNAPSHOTS = [
     { id: "US-014", title: "As a reviewer, I want the demo to show the full workflow.", status: "Backlog", sprint: "Sprint 4" }
   ]
   }},
-  { date: "2025-05-04", isCurrent: false, data: {
+  { date: "2026-05-04", isCurrent: false, data: {
   sprints: [
     { name: "Sprint 0", status: "Planning", title: "Initialization & Requirements", goal: "Establish repository, finalize SRS/TODO, configure CI baseline, deploy static task board." },
     { name: "Sprint 1", status: "Backlog", title: "Upload & Validation Pipeline", goal: "Implement Flask routing, goal input, file upload validation, storage handling, and baseline pytest suite." },
