@@ -1,19 +1,19 @@
 /**
  * BACKLOG PAGE - RENDERING LOGIC
- * Displays Sprint 8 in-progress items and Post-Capstone stretch goals.
+ * Displays Sprint 8 completed items and Post-Capstone stretch goals.
  * The old "Implemented (Sprints 1-7)" column is removed — user-stories.html covers that.
  */
 
 const BACKLOG_DATA = [
   {
-    level: "Sprint 8 — In Progress",
+    level: "Sprint 8 — Complete",
     items: [
-      "Cloud VPS deployment (DigitalOcean or AWS EC2) — 4 vCPU / 8 GB RAM / 160 GB disk",
-      "Final documentation review (SRS, TODO, DESIGN, STATUS, AI_AGENT_PROTOCOL — doc lock-in complete)",
+      "Cloud VPS deployment (DigitalOcean or AWS EC2) — 4 vCPU / 8 GB RAM / 160 GB disk — DONE",
+      "Final documentation review (SRS, TODO, DESIGN, STATUS, AI_AGENT_PROTOCOL — doc lock-in complete) — DONE",
       "Proprietary demo document set created (kept privately outside repo) — DONE",
       "Cloud ChromaDB and cloud AI provider testing — DONE",
-      "General QA pass and UX polish",
-      "Demo recording (15–20 min) and capstone submission"
+      "General QA pass and UX polish — DONE",
+      "Demo recording (15–20 min) and capstone submission — DONE"
     ]
   },
   {
