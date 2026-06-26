@@ -8,7 +8,7 @@ const BACKLOG_DATA = [
   {
     level: "Sprint 8 — Complete",
     items: [
-      "Cloud VPS deployment (DigitalOcean or AWS EC2) — 4 vCPU / 8 GB RAM / 160 GB disk — DONE",
+      "Cloud VPS deployment (DigitalOcean) — 4 vCPU / 8 GB RAM / 160 GB disk — DONE",
       "Final documentation review (SRS, TODO, DESIGN, STATUS, AI_AGENT_PROTOCOL — doc lock-in complete) — DONE",
       "Proprietary demo document set created (kept privately outside repo) — DONE",
       "Cloud ChromaDB and cloud AI provider testing — DONE",
